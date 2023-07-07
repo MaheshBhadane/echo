@@ -1,7 +1,13 @@
+import { Button } from '@mantine/core';
 
 function Home() {
   return (
-    <div>Home</div>
+
+    <div>Home
+      <Button>
+        Click me!</Button>;
+
+    </div>
   )
 }
 
