@@ -1,8 +1,14 @@
+import React from 'react';
+import { Container } from '@mantine/core';
 
-function Login() {
+const Login: React.FC = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <Container style={{ display: 'flex', justifyContent: 'center' }}>
+      <main style={{ maxWidth: '800px', width: '100%' }}>
+        <h2 style={{ textAlign: 'center' }}>Login Page</h2>
+      </main>
+    </Container>
+  );
+};
 
-export default Login
+export default Login;
