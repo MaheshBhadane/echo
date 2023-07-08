@@ -1,12 +1,8 @@
-import {
-    createStyles,
-    Header,
-    Container,
-    Button,
-    rem,
-} from "@mantine/core";
-import { IconUserCircle } from "@tabler/icons-react";
-import { NavLink } from "react-router-dom";
+import { createStyles, Header, Container, rem, Button } from "@mantine/core";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { IconLogout } from "@tabler/icons-react";
+import Cookies from "js-cookie";
+import MenuOptions from "./Menu";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -39,9 +35,7 @@ const useStyles = createStyles((theme) => ({
         borderRadius: theme.radius.sm,
         textDecoration: "none",
         color:
-            theme.colorScheme === "dark"
-                ? theme.colors.dark[0]
-                : theme.colors.gray[7],
+            theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7],
         fontSize: theme.fontSizes.sm,
         fontWeight: 500,
 
@@ -58,21 +52,43 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export function Navbar() {
+const Navbar = () => {
     const { classes } = useStyles();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const isHomePage = location.pathname === "/home";
+    const isProfilePage = location.pathname === "/profile";
+
+    const handleLogout = () => {
+        Cookies.remove("user");
+        navigate("/");
+        window.location.reload();
+    };
 
     return (
         <Header height={HEADER_HEIGHT} sx={{ backgroundColor: "#DAE1EC" }}>
             <Container className={classes.inner} fluid>
-                <NavLink to="/" style={{ cursor: "pointer" }}>
+                <NavLink to="login" style={{ cursor: "pointer" }}>
                     <h2>Echo Player</h2>
-                </NavLink>{" "}
-                <NavLink to="login">
-                    <Button radius="lg" h={30} size="lg">
-                        <IconUserCircle size="1.5rem" color="#f8f8fb" /> Login
-                    </Button>
                 </NavLink>
+                {isHomePage && <MenuOptions />}
+                {isProfilePage && (
+                    <NavLink to="login">
+                        <Button
+                            radius="lg"
+                            h={30}
+                            size="lg"
+                            onClick={handleLogout}
+                            leftIcon={<IconLogout size="1.5rem" color="#f8f8fb" />}
+                        >
+                            LogOut
+                        </Button>
+                    </NavLink>
+                )}
             </Container>
         </Header>
     );
-}
+};
+
+export default Navbar;

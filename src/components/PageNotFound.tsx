@@ -8,8 +8,9 @@ import {
     Group,
     rem,
 } from "@mantine/core";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import error from '../assets/404.gif'
+import Cookies from "js-cookie";
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -52,8 +53,18 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export function PageNotFound() {
+const PageNotFound = () => {
     const { classes } = useStyles();
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (Cookies.get("user")) {
+            navigate("home");
+        }
+        else {
+            navigate("/")
+        }
+    }
 
     return (
         <Container className={classes.root}>
@@ -71,12 +82,12 @@ export function PageNotFound() {
                 address, or the page has been moved to another URL.
             </Text>
             <Group position="center">
-                <NavLink to="/">
-                    <Button variant="gradient" size="md">
-                        Take me back to home page
-                    </Button>
-                </NavLink>{" "}
+                <Button variant="gradient" size="md" onClick={handleClick}>
+                    Take me back to home page
+                </Button>
             </Group>
         </Container>
     );
 }
+
+export default PageNotFound;
