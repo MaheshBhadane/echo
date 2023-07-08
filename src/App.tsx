@@ -12,21 +12,21 @@ import Hero from "./pages/Hero";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />}>
       <Route index element={<Hero />} />
-      <Route path='home' element={<Home />} />
-      <Route path='login' element={<Login />} />
-      <Route path='*' element={<PageNotFound />} />
+      <Route path="home" element={<Home />} />
+      <Route path="login" element={<Login />} />
+      <Route path="*" element={<PageNotFound />} />
     </Route>
-
   )
 );
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} /></>
-  )
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
-export default App
+export default App;

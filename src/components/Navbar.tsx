@@ -5,7 +5,9 @@ import {
     Group,
     Button,
     rem,
+    Avatar,
 } from "@mantine/core";
+import { IconUserCircle } from "@tabler/icons-react";
 import { NavLink } from "react-router-dom";
 
 const HEADER_HEIGHT = rem(60);
@@ -14,8 +16,10 @@ const useStyles = createStyles((theme) => ({
     inner: {
         height: HEADER_HEIGHT,
         display: "flex",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
         alignItems: "center",
+        paddingRight: "50px",
+        paddingLeft: "50px",
     },
 
     links: {
@@ -62,13 +66,14 @@ export function Navbar() {
     return (
         <Header height={HEADER_HEIGHT} sx={{ backgroundColor: "#DAE1EC" }}>
             <Container className={classes.inner} fluid>
-                <Group >
-                    <NavLink to="/">Echo Player</NavLink>{" "}
-                </Group>
-
-                <Button radius="lg" h={30} size="lg">
-                    <NavLink to="login">Login</NavLink>
-                </Button>
+                <NavLink to="/" style={{ cursor: "pointer" }}>
+                    <h2>Echo Player</h2>
+                </NavLink>{" "}
+                <NavLink to="login">
+                    <Button radius="lg" h={30} size="lg">
+                        <IconUserCircle size="1.5rem" color="#f8f8fb" /> Login
+                    </Button>
+                </NavLink>
             </Container>
         </Header>
     );
