@@ -4,18 +4,20 @@ import {
     createStyles,
     TextInput,
     PasswordInput,
-    Checkbox,
     Button,
     Title,
     rem,
 } from "@mantine/core";
 import { useForm } from "react-hook-form";
 import { validationRules } from "./helper";
+import Cookies from "js-cookie";
+import { loginUser } from "../../utils";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
     email: string;
     password: string;
-    keepLoggedIn: boolean;
 };
 
 const useStyles = createStyles((theme) => ({
@@ -51,9 +53,19 @@ const Login = () => {
         formState: { errors },
     } = useForm<Inputs>();
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Cookies.get("user")) {
+            navigate("/");
+        }
+    }, [navigate]);
+
     const submitHandler = (data: Inputs) => {
-        console.log(data);
+        loginUser(data?.email);
+        window.location.reload();
     };
+
     const { classes } = useStyles();
     return (
         <div className={classes.wrapper}>
@@ -77,12 +89,6 @@ const Login = () => {
                         size="md"
                         error={errors?.password?.message}
                         {...register("password", validationRules.password)}
-                    />
-                    <Checkbox
-                        label="Keep me logged in"
-                        mt="xl"
-                        size="md"
-                        {...register("keepLoggedIn")}
                     />
                     <Button type="submit" fullWidth mt="xl" size="md">
                         Login
