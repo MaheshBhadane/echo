@@ -9,6 +9,7 @@ import {
     rem,
 } from "@mantine/core";
 import { NavLink } from "react-router-dom";
+import error from '../assets/404.gif'
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -56,7 +57,9 @@ export function PageNotFound() {
 
     return (
         <Container className={classes.root}>
-            <div className={classes.label}>404</div>
+            <div className={classes.label}>
+                <img src={error} alt="PageNotFound" height={'200px'} />
+            </div>
             <Title className={classes.title}>You have found a secret place.</Title>
             <Text
                 color="dimmed"
@@ -68,9 +71,11 @@ export function PageNotFound() {
                 address, or the page has been moved to another URL.
             </Text>
             <Group position="center">
-                <Button variant="gradient" size="md">
-                    <NavLink to="/">Take me back to home page</NavLink>{" "}
-                </Button>
+                <NavLink to="/">
+                    <Button variant="gradient" size="md">
+                        Take me back to home page
+                    </Button>
+                </NavLink>{" "}
             </Group>
         </Container>
     );

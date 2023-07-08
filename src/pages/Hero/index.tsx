@@ -42,11 +42,11 @@ const Hero = () => {
                 <Text style={{ marginBottom: "20px" }}>
                     A simple Music Player with a powerful playlist manager..!!
                 </Text>
-                <Button variant="gradient" size="lg" radius="xl">
-                    <NavLink to="home" style={{ color: "#fff" }}>
+                <NavLink to="home" style={{ color: "#fff" }}>
+                    <Button variant="gradient" size="lg" radius="xl">
                         Get started
-                    </NavLink>
-                </Button>
+                    </Button>
+                </NavLink>
             </Container>
         </div>
     );
