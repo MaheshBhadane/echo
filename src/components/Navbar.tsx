@@ -2,10 +2,8 @@ import {
     createStyles,
     Header,
     Container,
-    Group,
     Button,
     rem,
-    Avatar,
 } from "@mantine/core";
 import { IconUserCircle } from "@tabler/icons-react";
 import { NavLink } from "react-router-dom";
