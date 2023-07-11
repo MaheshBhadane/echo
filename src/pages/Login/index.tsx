@@ -57,7 +57,7 @@ const Login = () => {
 
     useEffect(() => {
         if (Cookies.get("user")) {
-            navigate("home");
+            navigate("/home");
         }
     }, [navigate]);
 
