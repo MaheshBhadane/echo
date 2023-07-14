@@ -1,16 +1,7 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import { Outlet } from "react-router-dom";
 
-function RootLayout() {
-    const location = useLocation();
+const RootLayout = () => {
+    return <Outlet />;
+};
 
-    const isHeroPage = location.pathname === "/";
-    return (<>
-        {!isHeroPage && <Navbar />}
-        <main>
-            <Outlet />
-        </main></>
-    )
-}
-
-export default RootLayout
+export default RootLayout;

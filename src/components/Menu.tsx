@@ -7,8 +7,8 @@ const MenuOptions = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        Cookies.remove("user");
-        navigate("/", { replace: true });
+        Cookies.remove("authUser");
+        navigate(0)
     };
 
     const handleProfileClick = () => {

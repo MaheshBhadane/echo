@@ -83,7 +83,7 @@ const PageNotFound = () => {
             </Text>
             <Group position="center">
                 <Button variant="gradient" size="md" onClick={handleClick}>
-                    Take me back to home page
+                    Take Me Back
                 </Button>
             </Group>
         </Container>
