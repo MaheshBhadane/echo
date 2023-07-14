@@ -57,35 +57,34 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const isHomePage = location.pathname === "/home";
+    const isHomePage = location.pathname === "/";
     const isProfilePage = location.pathname === "/profile";
 
     const handleLogout = () => {
-        Cookies.remove("user");
-        navigate("/");
-        window.location.reload();
+        Cookies.remove("authUser");
+        navigate(0)
     };
 
     return (
         <Header height={HEADER_HEIGHT} sx={{ backgroundColor: "#DAE1EC" }}>
             <Container className={classes.inner} fluid>
-                <NavLink to="login" style={{ cursor: "pointer" }}>
+                <NavLink to="/" style={{ cursor: "pointer" }}>
                     <h2>Echo Player</h2>
                 </NavLink>
-                {isHomePage && <MenuOptions />}
-                {isProfilePage && (
-                    <NavLink to="login">
-                        <Button
-                            radius="lg"
-                            h={30}
-                            size="lg"
-                            onClick={handleLogout}
-                            leftIcon={<IconLogout size="1.5rem" color="#f8f8fb" />}
-                        >
-                            LogOut
-                        </Button>
-                    </NavLink>
-                )}
+                {isHomePage ?
+                    <MenuOptions />
+                    : null}
+                {isProfilePage ? (
+                    <Button
+                        radius="lg"
+                        h={30}
+                        size="lg"
+                        onClick={handleLogout}
+                        leftIcon={<IconLogout size="1.5rem" color="#f8f8fb" />}
+                    >
+                        LogOut
+                    </Button>
+                ) : null}
             </Container>
         </Header>
     );

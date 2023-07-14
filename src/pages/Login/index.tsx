@@ -11,8 +11,6 @@ import {
 import { useForm } from "react-hook-form";
 import { validationRules } from "./helper";
 import Cookies from "js-cookie";
-import { loginUser } from "../../utils";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 type Inputs = {
@@ -55,15 +53,12 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (Cookies.get("user")) {
-            navigate("/home");
-        }
-    }, [navigate]);
-
     const submitHandler = (data: Inputs) => {
-        loginUser(data?.email);
-        window.location.reload();
+        const { email } = data;
+        Cookies.set("authUser", email, {
+            expires: new Date(Date.now() + 60000),
+        });
+        navigate(0);
     };
 
     const { classes } = useStyles();
