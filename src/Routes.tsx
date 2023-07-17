@@ -4,24 +4,38 @@ import RootLayout from "./layouts/RootLayout";
 import Login from "./pages/Login";
 import PageNotFound from "./components/PageNotFound";
 import Profile from "./pages/Profile";
+import Loader from "./components/ui/Loader";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 export const publicRoutes = [
     {
         path: "/",
-        element: <RootLayout />,
+        element: (
+            <ErrorBoundary>
+                <RootLayout />
+            </ErrorBoundary>
+        ),
         children: [{ path: "/", element: <Login /> }],
     },
     {
         path: "*",
-        element: <PageNotFound />,
+        element: (
+            <ErrorBoundary>
+                <PageNotFound />
+            </ErrorBoundary>
+        ),
     },
 ];
 
-export const authRoutes = [
+export const protectedRoutes = [
     {
         path: "/",
-        element: <ProtectedLayout />,
-        loader: () => <>Loading...</>,
+        element: (
+            <ErrorBoundary>
+                <ProtectedLayout />
+            </ErrorBoundary>
+        ),
+        loader: () => <Loader />,
         children: [
             { path: "/", element: <Home /> },
             { path: "profile", element: <Profile /> },
@@ -29,6 +43,10 @@ export const authRoutes = [
     },
     {
         path: "*",
-        element: <PageNotFound />,
+        element: (
+            <ErrorBoundary>
+                <PageNotFound />
+            </ErrorBoundary>
+        ),
     },
 ];

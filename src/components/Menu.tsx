@@ -5,10 +5,9 @@ import Cookies from "js-cookie";
 
 const MenuOptions = () => {
     const navigate = useNavigate();
-
     const handleLogout = () => {
         Cookies.remove("authUser");
-        navigate(0)
+        window.location.pathname = "/"
     };
 
     const handleProfileClick = () => {

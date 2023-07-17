@@ -2,9 +2,7 @@
 import {
     Paper,
     createStyles,
-    TextInput,
     PasswordInput,
-    Button,
     Title,
     rem,
 } from "@mantine/core";
@@ -12,6 +10,11 @@ import { useForm } from "react-hook-form";
 import { validationRules } from "./helper";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/ui/Button";
+import musicImage from '../../assets/musical-note.png'
+import heroImage from '../../assets/hero.jpeg'
+import TextInput from "../../components/ui/TextInput";
+
 
 type Inputs = {
     email: string;
@@ -20,19 +23,18 @@ type Inputs = {
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
-        minHeight: rem(900),
-        backgroundSize: "cover",
-        backgroundImage:
-            "url(https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80)",
+        height: '100%',
+        width: '100%',
+        // backgroundSize: "cover",
+        backgroundImage: `url(${heroImage})`,
     },
 
     form: {
         borderRight: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
             }`,
-        minHeight: rem(900),
+        minHeight: rem(712),
         maxWidth: rem(450),
         paddingTop: rem(80),
-
         [theme.fn.smallerThan("sm")]: {
             maxWidth: "100%",
         },
@@ -41,6 +43,15 @@ const useStyles = createStyles((theme) => ({
     title: {
         color: theme.colorScheme === "dark" ? theme.white : theme.black,
         fontFamily: `Greycliff CF, ${theme.fontFamily!}`,
+    },
+    imageWrapper: {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: rem(30),
+    },
+    image: {
+        maxWidth: "100%",
+        height: "auto",
     },
 }));
 
@@ -88,6 +99,9 @@ const Login = () => {
                     <Button type="submit" fullWidth mt="xl" size="md">
                         Login
                     </Button>
+                    <div className={classes.imageWrapper}>
+                        <img src={musicImage} alt="Musician" className={classes.image} />
+                    </div>
                 </form>
             </Paper>
         </div>
