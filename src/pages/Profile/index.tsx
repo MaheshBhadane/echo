@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container, Paper, Grid, Col, Image, Text, Divider } from '@mantine/core';
 import usePic from "../../assets/user.jpg";
+import Cookies from "js-cookie";
 
 const Profile: React.FC = () => {
     const user = {
         name: 'Mahesh Bhadane',
-        email: 'mahesh.bhadane@torinit.ca',
+        email: Cookies.get('authUser') || 'mahesh.bhadane@torinit.ca',
         bio: 'I love coding and building awesome things!',
         avatar: 'https://example.com/avatar.png',
         location: 'Pune,India',

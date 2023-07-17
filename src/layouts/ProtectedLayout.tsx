@@ -3,11 +3,13 @@ import Navbar from '../components/Navbar'
 
 function ProtectedLayout() {
 
-    return (<>
-        <main>
+    return (
+        <>
             <Navbar />
-            <Outlet />
-        </main></>
+            <main>
+                <Outlet />
+            </main>
+        </>
     )
 }
 

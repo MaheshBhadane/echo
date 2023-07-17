@@ -1,57 +1,14 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import {
-    createStyles,
     Title,
     Text,
-    Button,
     Container,
     Group,
-    rem,
 } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import error from '../assets/404.gif'
 import Cookies from "js-cookie";
-
-const useStyles = createStyles((theme) => ({
-    root: {
-        paddingTop: rem(80),
-        paddingBottom: rem(80),
-    },
-
-    label: {
-        textAlign: "center",
-        fontWeight: 900,
-        fontSize: rem(220),
-        lineHeight: 1,
-        marginBottom: `calc(${theme.spacing.xl} * 1.5)`,
-        color:
-            theme.colorScheme === "dark"
-                ? theme.colors.dark[4]
-                : theme.colors.gray[2],
-
-        [theme.fn.smallerThan("sm")]: {
-            fontSize: rem(120),
-        },
-    },
-
-    title: {
-        fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-        textAlign: "center",
-        fontWeight: 900,
-        fontSize: rem(38),
-
-        [theme.fn.smallerThan("sm")]: {
-            fontSize: rem(32),
-        },
-    },
-
-    description: {
-        maxWidth: rem(500),
-        margin: "auto",
-        marginTop: theme.spacing.xl,
-        marginBottom: `calc(${theme.spacing.xl} * 1.5)`,
-    },
-}));
+import useStyles from "./style";
+import Button from "./ui/Button";
 
 const PageNotFound = () => {
     const { classes } = useStyles();
@@ -82,7 +39,7 @@ const PageNotFound = () => {
                 address, or the page has been moved to another URL.
             </Text>
             <Group position="center">
-                <Button variant="gradient" size="md" onClick={handleClick}>
+                <Button size="md" onClick={handleClick}>
                     Take Me Back
                 </Button>
             </Group>

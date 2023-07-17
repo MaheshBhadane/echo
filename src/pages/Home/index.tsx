@@ -3,6 +3,7 @@ import { Container } from "@mantine/core";
 import Search from "../../components/Searchbar";
 
 const Home: React.FC = () => {
+
   return (
     <>
       <Container style={{ display: "flex", justifyContent: "center" }}>

@@ -1,10 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { authRoutes, publicRoutes } from "./Routes";
+import { protectedRoutes, publicRoutes } from "./Routes";
 import Cookies from "js-cookie";
 
 function App() {
   const authUser = Cookies.get("authUser");
-  const routes = authUser ? authRoutes : publicRoutes;
+  const routes = authUser ? protectedRoutes : publicRoutes;
   const router = createBrowserRouter(routes);
 
   return <RouterProvider router={router} />;
