@@ -1,5 +1,6 @@
 import { Container } from "@mantine/core";
 import { Component, ErrorInfo, ReactNode } from "react";
+import Page500  from "./Page500";
 
 interface Props {
     children?: ReactNode;
@@ -32,7 +33,7 @@ class ErrorBoundary extends Component<Props, State> {
                     minHeight: '100vh',
                 }}
             >
-                <h2>Sorry.. there was an error..!!</h2>
+                <Page500/>
             </Container>;
         }
 

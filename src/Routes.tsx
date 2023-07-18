@@ -2,10 +2,10 @@ import Home from "./pages/Home";
 import ProtectedLayout from "./layouts/ProtectedLayout";
 import RootLayout from "./layouts/RootLayout";
 import Login from "./pages/Login";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./pages/ErrorPages/PageNotFound";
 import Profile from "./pages/Profile";
 import Loader from "./components/ui/Loader";
-import ErrorBoundary from "./components/ErrorBoundary";
+import ErrorBoundary from "./pages/ErrorPages/ErrorBoundary";
 
 export const publicRoutes = [
     {
