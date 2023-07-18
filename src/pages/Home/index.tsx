@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@mantine/core";
-import Search from "../../components/Searchbar";
+import Search from "../../components/ui/Searchbar";
 
 const Home: React.FC = () => {
 
