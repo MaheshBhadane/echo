@@ -14,7 +14,7 @@ const Button = (props: ButtonProps) => {
     const {
         children,
         variant = "outline",
-        color = "cyan",
+        color = "gray",
         size = "md",
         radius = "md",
     } = props;
