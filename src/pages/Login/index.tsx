@@ -6,8 +6,6 @@ import { validationRules } from "./helper";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
-import musicImage from '../../assets/musical-note.png';
-import heroImage from '../../assets/hero.jpeg';
 import TextInput from "../../components/ui/TextInput";
 import { useMediaQuery } from "@mantine/hooks";
 import useStyles from "./style";
