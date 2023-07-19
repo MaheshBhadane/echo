@@ -32,7 +32,7 @@ const SongCard = () => {
     <div className={classes.cardContainer}>
       {songs?.map((song) => (
         <Card
-          key={song.trackId}
+          key={song?.trackId}
           shadow="sm"
           padding="lg"
           radius="md"

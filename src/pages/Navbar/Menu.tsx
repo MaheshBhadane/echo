@@ -26,7 +26,7 @@ const MenuOptions = () => {
   return (
     <Menu shadow="md" width={150}>
       <Menu.Target>
-        <Avatar color="cyan" radius="xl" style={{ cursor: "pointer" }}>
+        <Avatar color="gray" radius="xl" style={{ cursor: "pointer" }}>
           {getInitials(authUser!)}
         </Avatar>
       </Menu.Target>
