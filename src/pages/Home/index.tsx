@@ -1,26 +1,19 @@
 import React from "react";
-import { Container } from "@mantine/core";
 import Search from "../../components/ui/Searchbar";
+import SongCard from "../SongCard";
+import { CenteredDiv, MainContainer } from "./style";
 
 const Home: React.FC = () => {
-
   return (
     <>
-      <Container style={{ display: "flex", justifyContent: "center" }}>
-        <main
-          style={{
-            maxWidth: "800px",
-            width: "100%",
-            paddingTop: "30px",
-            color: "#373b53",
-          }}
-        >
+      <CenteredDiv>
+        <MainContainer>
           <Search />
-          <h2 style={{ textAlign: "center" }}>
-            Hello, Welcome to My Website..!!
-          </h2>
-        </main>
-      </Container>
+        </MainContainer>
+      </CenteredDiv>
+      <div style={{ padding: "20px" }}>
+        <SongCard />
+      </div>
     </>
   );
 };

@@ -31,7 +31,7 @@ const Login = () => {
     const submitHandler = (data: Inputs) => {
         const { email } = data;
         Cookies.set("authUser", email, {
-            expires: new Date(Date.now() + 60000),
+            expires: new Date(Date.now() + 6 * 60000),
         });
         navigate(0);
     };  
@@ -41,7 +41,7 @@ const Login = () => {
         <div className={classes.wrapper}>
             {!isMobile && (
                 <div>
-                    <img src={heroImage} alt="Hero" className={classes.image} />
+                    <img src={"https://images.unsplash.com/photo-1618667902266-ac23d555a320?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fG11c2ljJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt="Hero" className={classes.image} />
                 </div>)}
             <Paper className={classes.form} radius={0} p={30}>
                 <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
@@ -68,7 +68,7 @@ const Login = () => {
                         Login
                     </Button>
                     <div className={classes.imageWrapper} >
-                        <img src={musicImage} alt="Musician" style={{ padding: '50px' }} />
+                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvu90J_0gAthBDvgn0Q-RSK2xZK2pIcvRJAg&usqp=CAU"} alt="Musician" style={{ padding: '50px' }} />
                     </div>
                 </form>
             </Paper>

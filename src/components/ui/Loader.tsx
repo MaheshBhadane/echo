@@ -5,11 +5,11 @@ import {
 import { FC } from "react";
 
 const Loader: FC<MantineLoaderProps> = (props) => {
-    const { variant = "bars" } = props;
+    const { variant = "oval" , size = '50'} = props;
 
     return (
         <div className="flex w-full justify-center">
-            <MantineLoader variant={variant} {...props} />
+            <MantineLoader variant={variant} size={size} {...props} />
         </div>
     );
 };
