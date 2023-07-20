@@ -6,7 +6,7 @@ import { fetchSongs } from "../../reducers/songsSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import Loader from "../../components/ui/Loader";
 import { useDispatch } from "react-redux";
-import SongCard from "./SongCard";
+import SongCard from "../../components/SongCard";
 import AudioPlayer from "../../components/ui/AudioPlayer";
 
 const SongCardWrapper: React.FC = () => {
