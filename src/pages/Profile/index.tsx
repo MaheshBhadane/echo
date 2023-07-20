@@ -4,6 +4,7 @@ import usePic from "../../assets/user.jpg";
 import Cookies from "js-cookie";
 
 const Profile: React.FC = () => {
+    
     const user = {
         name: 'Mahesh Bhadane',
         email: Cookies.get('authUser') || 'mahesh.bhadane@torinit.ca',
