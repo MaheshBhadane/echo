@@ -4,7 +4,7 @@ import RootLayout from "./layouts/RootLayout";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/ErrorPages/PageNotFound";
 import Profile from "./pages/Profile";
-import Loader from "./components/UI/Loader";
+import Loader from "./components/ui/Loader";
 
 export const publicRoutes = [
   {

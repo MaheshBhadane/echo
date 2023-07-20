@@ -4,7 +4,7 @@ import { RootState } from "../../app/store";
 import { useAppSelector } from "../../app/hooks";
 import { fetchSongs } from "../../reducers/songsSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import Loader from "../../components/UI/Loader";
+import Loader from "../../components/ui/Loader";
 import { useDispatch } from "react-redux";
 import SongCard from "../../components/Card/SongCard";
 
