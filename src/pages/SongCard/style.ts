@@ -5,6 +5,7 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center", 
+    gap:'50px',
   },
   loaderContainer: {
     display: 'flex',
@@ -14,8 +15,8 @@ const useStyles = createStyles((theme) => ({
   },
   card: {
     width: "100%", 
-    maxWidth: "300px", 
-    margin: "10px", 
+    maxWidth: "400px",
+    backgroundColor: "#DAE1EC",
     [theme.breakpoints.lg]: {
       width: "50%", 
       margin: "20px", 
