@@ -7,7 +7,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import error from '../../assets/404.gif'
 import Cookies from "js-cookie";
-import useStyles from "../Navbar/style";
+import useStyles from "../../components/Navbar/style";
 import Button from "../../components/ui/Button";
 
 const PageNotFound = () => {
