@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Paper, PasswordInput, Title } from "@mantine/core";
 import { useForm } from "react-hook-form";
 import { validationRules } from "./helper";

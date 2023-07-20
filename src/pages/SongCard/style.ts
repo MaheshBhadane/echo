@@ -6,6 +6,12 @@ const useStyles = createStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "center", 
   },
+  loaderContainer: {
+    display: 'flex',
+    alignitems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
   card: {
     width: "100%", 
     maxWidth: "300px", 

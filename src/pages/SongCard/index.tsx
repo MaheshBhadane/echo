@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Card, Group, Image, Text } from "@mantine/core";
@@ -21,7 +19,11 @@ const SongCard = () => {
   }, [dispatch]);
 
   if (status === "loading") {
-    return <Loader/>;
+    return (
+      <div className={classes.loaderContainer}>
+        <Loader />
+      </div>
+    );
   }
 
   if (status === "failed") {
@@ -30,7 +32,8 @@ const SongCard = () => {
 
   return (
     <div className={classes.cardContainer}>
-      {songs?.map((song) => (
+      {songs?.length > 0 ? (
+      songs.map((song) => (
         <Card
           key={song?.trackId}
           shadow="sm"
@@ -51,7 +54,10 @@ const SongCard = () => {
             {song?.artistName}
           </Text>
         </Card>
-      ))}
+      ))
+      ) : (
+        <div>No Songs Available..!!</div>
+      )}
     </div>
   );
 };
