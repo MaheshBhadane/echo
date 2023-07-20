@@ -18,6 +18,8 @@ interface SongsState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   searchTerm: string;
+  currentSong: Song  | null;
+  isPlaying: boolean
 }
 
 const initialState: SongsState = {
@@ -25,6 +27,8 @@ const initialState: SongsState = {
   status: "idle",
   error: null,
   searchTerm: "",
+  currentSong: null,
+  isPlaying:false
 };
 
 // for fetching songs
@@ -50,10 +54,18 @@ export const searchSongs = createAsyncThunk(
   }
 );
 
+
 const songsSlice = createSlice({
   name: "songs",
   initialState,
-  reducers: {},
+  reducers: {
+    selectSong: (state, action: PayloadAction<Song | null>) => {
+      state.currentSong = action.payload;
+    }, 
+    setPlaying: (state, action: PayloadAction<boolean>) => {
+      state.isPlaying = action.payload;
+    } 
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSongs.pending, (state) => {
@@ -81,5 +93,5 @@ const songsSlice = createSlice({
       });
   },
 });
-
+export const { selectSong,setPlaying } = songsSlice.actions;
 export default songsSlice.reducer;
