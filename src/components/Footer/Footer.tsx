@@ -3,8 +3,8 @@ import { IconPlayerPause, IconPlayerPlayFilled, IconPlayerTrackPrevFilled, IconP
 import { prevSong, nextSong, setPlaying } from '../../reducers/songsSlice';
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import VolumeController from "../VolumeController/VolumeController";
-import Button from "../UI/Button";
-import AudioPlayer from "../UI/AudioPlayer";
+import Button from "../ui/Button";
+import AudioPlayer from "../ui/AudioPlayer";
 import { StyledFooter } from "./style";
 
 const FooterPage = () => {

@@ -1,7 +1,7 @@
 import { Card, Flex, Group, Image, Text } from '@mantine/core'
 import { useState } from "react"
 import useStyles from '../../pages/SongCardWrapper/style'
-import Button from '../UI/Button'
+import Button from '../ui/Button'
 import { IconPlayerPauseFilled, IconPlayerPlayFilled } from '@tabler/icons-react'
 import { useDispatch } from 'react-redux'
 import { selectSong, setPlaying } from '../../reducers/songsSlice'

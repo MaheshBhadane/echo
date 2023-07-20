@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../../components/UI/Search";
+import Search from "../../components/ui/Search";
 import { CenteredDiv, MainContainer } from "./style";
 import SongCardWrapper from "../SongCardWrapper";
 import FooterPage from "../../components/Footer/Footer";

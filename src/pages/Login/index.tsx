@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { validationRules } from "./helper";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/UI/Button";
-import TextInput from "../../components/UI/TextInput";
+import Button from "../../components/ui/Button";
+import TextInput from "../../components/ui/TextInput";
 import { useMediaQuery } from "@mantine/hooks";
 import useStyles from "./style";
 
