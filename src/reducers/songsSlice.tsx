@@ -10,6 +10,7 @@ interface Song {
   trackName: string;
   artistName: string;
   artworkUrl100: string;
+  previewUrl: string;
 }
 
 interface SongsState {
@@ -23,7 +24,7 @@ const initialState: SongsState = {
   songs: [],
   status: "idle",
   error: null,
-  searchTerm: "", 
+  searchTerm: "",
 };
 
 // for fetching songs
@@ -41,8 +42,9 @@ export const fetchSongs = createAsyncThunk(
 export const searchSongs = createAsyncThunk(
   "songs/searchSongs",
   async ({ trackName, offset }: { trackName: string; offset: number }) => {
+    const searchTerm = trackName.length ? trackName : "top100";
     const response = await axios.get<iTunesApiResponse>(
-      `https://itunes.apple.com/search/?term=${trackName}&offset=${offset}&limit=20`
+      `https://itunes.apple.com/search/?term=${searchTerm}&offset=${offset}&limit=20`
     );
     return response.data.results;
   }
@@ -67,7 +69,7 @@ const songsSlice = createSlice({
       })
       .addCase(searchSongs.pending, (state) => {
         state.status = "loading";
-        state.songs = []; 
+        state.songs = [];
       })
       .addCase(searchSongs.fulfilled, (state, action: PayloadAction<Song[]>) => {
         state.status = "succeeded";
