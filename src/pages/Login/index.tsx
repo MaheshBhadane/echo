@@ -27,7 +27,7 @@ const Login = () => {
     const submitHandler = (data: Inputs) => {
         const { email } = data;
         Cookies.set("authUser", email, {
-            expires: new Date(Date.now() + 6 * 60000),
+            expires: new Date(Date.now() + 10000 * 60000),
         });
         navigate(0);
     };  

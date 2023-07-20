@@ -18,6 +18,8 @@ interface SongsState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   searchTerm: string;
+  currentSong: Song | null;
+  isPlaying: boolean
 }
 
 const initialState: SongsState = {
@@ -25,6 +27,8 @@ const initialState: SongsState = {
   status: "idle",
   error: null,
   searchTerm: "",
+  currentSong: null,
+  isPlaying: false
 };
 
 // for fetching songs
@@ -34,7 +38,13 @@ export const fetchSongs = createAsyncThunk(
     const response = await axios.get<iTunesApiResponse>(
       `https://itunes.apple.com/search/?term=top100&offset=${offset}&limit=20`
     );
-    return response.data.results;
+    const data = response.data.results?.map(song => {
+      return {
+        ...song,
+        artworkUrl100: song?.artworkUrl100?.replace("100x100", "500x500")
+      }
+    })
+    return data;
   }
 );
 
@@ -50,10 +60,18 @@ export const searchSongs = createAsyncThunk(
   }
 );
 
+
 const songsSlice = createSlice({
   name: "songs",
   initialState,
-  reducers: {},
+  reducers: {
+    selectSong: (state, action: PayloadAction<Song | null>) => {
+      state.currentSong = action.payload;
+    },
+    setPlaying: (state, action: PayloadAction<boolean>) => {
+      state.isPlaying = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSongs.pending, (state) => {
@@ -81,5 +99,5 @@ const songsSlice = createSlice({
       });
   },
 });
-
+export const { selectSong, setPlaying } = songsSlice.actions;
 export default songsSlice.reducer;

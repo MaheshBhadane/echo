@@ -1,20 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import Button from "./Button";
-import { IconPlayerPlayFilled } from "@tabler/icons-react";
+import { useAppSelector } from "../../app/hooks";
+import { RootState } from "../../app/store";
 
-interface AudioPlayerProps {
-  previewUrl: string;
-  isPlaying: boolean;
-  onPlayPause: () => void;
-  isHovered: boolean;
-}
-
-const AudioPlayer: React.FC<AudioPlayerProps> = ({
-  previewUrl,
-  isPlaying,
-  onPlayPause,
-  isHovered
-}) => {
+const AudioPlayer: React.FC = () => {
+  const { isPlaying, currentSong } = useAppSelector(
+    (state: RootState) => state.songs
+  );
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -27,12 +18,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
   return (
     <>
-      <audio src={previewUrl} ref={audioRef} />
-      {isHovered && (
-      <Button size="sm" color="gray" onClick={onPlayPause}>
-        <IconPlayerPlayFilled />
-      </Button>
-      )}
+      <audio src={currentSong?.previewUrl} ref={audioRef} autoPlay />
     </>
   );
 };
