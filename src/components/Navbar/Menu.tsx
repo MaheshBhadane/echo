@@ -2,6 +2,7 @@ import { Avatar, Menu } from "@mantine/core";
 import { IconUserCircle, IconLogout } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { getInitials } from "../../constants/Initials";
 
 const MenuOptions = () => {
   const navigate = useNavigate();
@@ -14,13 +15,6 @@ const MenuOptions = () => {
 
   const handleProfileClick = () => {
     navigate("/profile");
-  };
-
-  const getInitials = (email:string) => {
-    if (!email) return "";
-    const [firstName, lastName] = email.split(".");
-    const initials = `${firstName[0]}${lastName[0]}`;
-    return initials.toUpperCase();
   };
   
   return (
