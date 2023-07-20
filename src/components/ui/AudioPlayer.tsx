@@ -3,18 +3,30 @@ import { useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 
 const AudioPlayer: React.FC = () => {
-  const { isPlaying, currentSong } = useAppSelector(
+  const { isPlaying, currentSong, volume } = useAppSelector(
     (state: RootState) => state.songs
   );
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (isPlaying) {
-      audioRef.current?.play();
+    const audioElement = audioRef.current;
+    if (!audioElement) return;
+  
+    if (currentSong && isPlaying) {
+      audioElement.src = currentSong.previewUrl;
+      audioElement.play();
     } else {
-      audioRef.current?.pause();
+      audioElement.pause();
     }
-  }, [isPlaying]);
+  }, [currentSong, isPlaying]);
+  
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (!audioElement) return;
+  
+    audioElement.volume = volume / 100;
+  }, [volume]);
+  
 
   return (
     <>

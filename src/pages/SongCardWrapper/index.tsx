@@ -4,10 +4,9 @@ import { RootState } from "../../app/store";
 import { useAppSelector } from "../../app/hooks";
 import { fetchSongs } from "../../reducers/songsSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import Loader from "../../components/ui/Loader";
+import Loader from "../../components/UI/Loader";
 import { useDispatch } from "react-redux";
-import SongCard from "../../components/SongCard";
-import AudioPlayer from "../../components/ui/AudioPlayer";
+import SongCard from "../../components/Card/SongCard";
 
 const SongCardWrapper: React.FC = () => {
   const { classes } = useStyles();
@@ -39,7 +38,6 @@ const SongCardWrapper: React.FC = () => {
       ) : (
         <h3>No Songs Available..!!</h3>
       )}
-      <AudioPlayer />
     </div>
   );
 };

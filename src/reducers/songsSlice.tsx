@@ -4,23 +4,16 @@ import axios from "axios";
 interface iTunesApiResponse {
   results: Song[];
 }
-
-interface Song {
-  trackId: number;
-  trackName: string;
-  artistName: string;
-  artworkUrl100: string;
-  previewUrl: string;
-}
-
 interface SongsState {
   songs: Song[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   searchTerm: string;
   currentSong: Song | null;
-  isPlaying: boolean
+  isPlaying: boolean;
+  volume: number; 
 }
+
 
 const initialState: SongsState = {
   songs: [],
@@ -28,7 +21,8 @@ const initialState: SongsState = {
   error: null,
   searchTerm: "",
   currentSong: null,
-  isPlaying: false
+  isPlaying: false,
+  volume: 50
 };
 
 // for fetching songs
@@ -60,6 +54,12 @@ export const searchSongs = createAsyncThunk(
   }
 );
 
+function findCurrentSongIndex(state: SongsState) {
+  const currentSongId = state.currentSong?.trackId;
+  return currentSongId !== undefined
+    ? state.songs.findIndex((song) => song.trackId === currentSongId)
+    : -1;
+}
 
 const songsSlice = createSlice({
   name: "songs",
@@ -70,7 +70,24 @@ const songsSlice = createSlice({
     },
     setPlaying: (state, action: PayloadAction<boolean>) => {
       state.isPlaying = action.payload;
-    }
+    },
+    setVolume: (state, action: PayloadAction<number>) => {
+      state.volume = action.payload; 
+    },
+    prevSong: (state) => {
+      const currentIndex = findCurrentSongIndex(state);
+      if (currentIndex !== -1) {
+        const prevIndex = (currentIndex - 1 + state.songs.length) % state.songs.length;
+        state.currentSong = state.songs[prevIndex];
+      }
+    },
+    nextSong: (state) => {
+      const currentIndex = findCurrentSongIndex(state);
+      if (currentIndex !== -1) {
+        const nextIndex = (currentIndex + 1) % state.songs.length;
+        state.currentSong = state.songs[nextIndex];
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -99,5 +116,6 @@ const songsSlice = createSlice({
       });
   },
 });
-export const { selectSong, setPlaying } = songsSlice.actions;
+
+export const { selectSong, setPlaying, prevSong, nextSong, setVolume } = songsSlice.actions;
 export default songsSlice.reducer;

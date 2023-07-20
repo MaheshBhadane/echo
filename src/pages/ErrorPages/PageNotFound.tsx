@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import error from '../../assets/404.gif'
 import Cookies from "js-cookie";
 import useStyles from "../../components/Navbar/style";
-import Button from "../../components/ui/Button";
+import Button from "../../components/UI/Button";
 
 const PageNotFound = () => {
     const { classes } = useStyles();

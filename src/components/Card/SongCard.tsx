@@ -1,12 +1,12 @@
 import { Card, Flex, Group, Image, Text } from '@mantine/core'
 import { useState } from "react"
-import useStyles from '../pages/SongCardWrapper/style'
-import Button from './ui/Button'
+import useStyles from '../../pages/SongCardWrapper/style'
+import Button from '../UI/Button'
 import { IconPlayerPauseFilled, IconPlayerPlayFilled } from '@tabler/icons-react'
 import { useDispatch } from 'react-redux'
-import { selectSong, setPlaying } from '../reducers/songsSlice'
-import { useAppSelector } from '../app/hooks'
-import { RootState } from '../app/store'
+import { selectSong, setPlaying } from '../../reducers/songsSlice'
+import { useAppSelector } from '../../app/hooks'
+import { RootState } from '../../app/store'
 
 const SongCard = ({
     song
@@ -20,17 +20,12 @@ const SongCard = ({
     const dispatch = useDispatch()
 
     const handleSongClick = () => {
-        if (!isPlaying) {
-            dispatch(selectSong(song));
-            dispatch(setPlaying(true))
-        }
-        if (isPlaying && currentSong?.trackId === song?.trackId) {
-            dispatch(setPlaying(false))
-        }
-        else {
+        if (!isPlaying || currentSong?.trackId !== song?.trackId) {
             dispatch(selectSong(song));
         }
-    }
+        dispatch(setPlaying(!isPlaying || currentSong?.trackId !== song?.trackId));
+    };
+
 
     return (
         <Card
@@ -53,7 +48,7 @@ const SongCard = ({
 
             <Group position="apart" mt="md" mb="xs">
                 <Flex direction={'column'}>
-                    <Text weight={500}>{song?.trackName}</Text>
+                    <Text weight={500}>{song?.trackName?.split(" ").slice(0, 4).join(" ")}</Text>
                     <Text
                         size="sm"
                     >
