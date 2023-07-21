@@ -8,11 +8,6 @@ import TextInput from "@/components/ui/TextInput";
 import { validationRules } from "@/pages/Login/helper";
 import Button from "@/components/ui/Button";
 
-type Inputs = {
-    email: string;
-    password: string;
-};
-
 const Login = () => {
     const isMobile = useMediaQuery("(max-width: 640px)");
 
