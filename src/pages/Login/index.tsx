@@ -1,12 +1,12 @@
 import { Paper, PasswordInput, Title } from "@mantine/core";
 import { useForm } from "react-hook-form";
-import { validationRules } from "./helper";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/ui/Button";
-import TextInput from "../../components/ui/TextInput";
 import { useMediaQuery } from "@mantine/hooks";
-import useStyles from "./style";
+import useStyles from "@/pages/Login/style";
+import TextInput from "@/components/ui/TextInput";
+import { validationRules } from "@/pages/Login/helper";
+import Button from "@/components/ui/Button";
 
 type Inputs = {
     email: string;

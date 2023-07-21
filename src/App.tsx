@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { protectedRoutes, publicRoutes } from "./Routes";
+import { protectedRoutes, publicRoutes } from "@/Routes";
 import Cookies from "js-cookie";
 
 const App = () => {

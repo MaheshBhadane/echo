@@ -1,11 +1,10 @@
 import React from "react";
-import Search from "../../components/ui/Search";
-import { CenteredDiv, MainContainer } from "./style";
-import SongCardWrapper from "../SongCardWrapper";
-import FooterPage from "../../components/Footer/Footer";
+import { CenteredDiv, MainContainer } from "@/pages/Home/style";
+import FooterPage from "@/components/Footer";
+import Search from "@/components/ui/Search";
+import SongCardWrapper from "@/pages/SongCardWrapper";
 
 const Home: React.FC = () => {
-
   return (
     <>
       <CenteredDiv>
