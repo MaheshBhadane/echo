@@ -1,12 +1,12 @@
-import React from "react";
-import useStyles from "./style";
-import { RootState } from "../../app/store";
-import { useAppSelector } from "../../app/hooks";
-import { fetchSongs } from "../../reducers/songsSlice";
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import Loader from "../../components/ui/Loader";
+import React, { useEffect, useState } from "react";
+import useStyles from "@/pages/SongCardWrapper/style";
 import { useDispatch } from "react-redux";
-import SongCard from "../../components/Card/SongCard";
+import { useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import { fetchSongs } from "@/reducers/songsSlice";
+import Loader from "@/components/ui/Loader";
+import SongCard from "@/components/Card/SongCard";
 
 const SongCardWrapper: React.FC = () => {
   const { classes } = useStyles();
@@ -14,9 +14,25 @@ const SongCardWrapper: React.FC = () => {
     (state: RootState) => state.songs
   );
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>();
+  const [offset, setOffset] = useState(0);
 
-  React.useEffect(() => {
-    dispatch(fetchSongs({ offset: 0 }));
+  const handleScroll = () => {
+    const isBottom =
+      window.innerHeight + window.scrollY >= document.body.scrollHeight;
+    if (isBottom) {
+      setOffset(prevOffset => prevOffset + 1);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchSongs({ offset }));
+  }, [dispatch, offset]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   if (status === "loading") {

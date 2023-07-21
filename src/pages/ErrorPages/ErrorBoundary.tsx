@@ -1,7 +1,6 @@
 import { Container } from "@mantine/core";
 import { Component, ErrorInfo, ReactNode } from "react";
-import Page500  from "./Page500";
-
+import Page500 from "@/pages/ErrorPages/Page500";
 interface Props {
     children?: ReactNode;
 }

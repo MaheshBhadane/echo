@@ -1,5 +1,5 @@
 import { Title, Text, Button, Container, Group } from '@mantine/core';
-import useStyles from './style';
+import useStyles from '@/pages/ErrorPages/style';
 
 const Page500 = () => {
   const { classes } = useStyles();

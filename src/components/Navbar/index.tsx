@@ -1,7 +1,8 @@
 import { rem } from "@mantine/core";
 import { NavLink } from "react-router-dom";
-import useStyles from "./style";
-import MenuOptions from "./Menu";
+import useStyles from "@/components/Navbar/style";
+import MenuOptions from "@/components/Menu";
+
 const HEADER_HEIGHT = rem(60);
 
 const Navbar = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Paper, Grid, Col, Image, Text, Divider } from '@mantine/core';
-import usePic from "../../assets/user.jpg";
+import usePic from "@/assets/user.jpg";
 import Cookies from "js-cookie";
-import { getInitials } from '../../constants/Initials';
+import { getInitials } from '@/utils';
 
 const Profile: React.FC = () => {
 

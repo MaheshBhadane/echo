@@ -1,9 +1,9 @@
 import { IconSearch } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
 import { Input } from "@mantine/core";
-import { searchSongs } from "../../reducers/songsSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { debounce } from "lodash";
+import { searchSongs } from "@/reducers/songsSlice";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();

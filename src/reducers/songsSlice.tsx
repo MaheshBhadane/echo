@@ -12,6 +12,7 @@ interface SongsState {
   currentSong: Song | null;
   isPlaying: boolean;
   volume: number; 
+  currentProgress:number;
 }
 
 
@@ -22,7 +23,8 @@ const initialState: SongsState = {
   searchTerm: "",
   currentSong: null,
   isPlaying: false,
-  volume: 50
+  volume: 50,
+  currentProgress: 0
 };
 
 // for fetching songs
@@ -88,6 +90,9 @@ const songsSlice = createSlice({
         state.currentSong = state.songs[nextIndex];
       }
     },
+    setCurrentProgress: (state, action: PayloadAction<number>) => {
+      state.currentProgress = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -117,5 +122,5 @@ const songsSlice = createSlice({
   },
 });
 
-export const { selectSong, setPlaying, prevSong, nextSong, setVolume } = songsSlice.actions;
+export const { selectSong, setPlaying, prevSong, nextSong, setVolume, setCurrentProgress } = songsSlice.actions;
 export default songsSlice.reducer;
