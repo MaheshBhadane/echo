@@ -38,4 +38,10 @@ export const StyledGroup = styled(Group)`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+
+  @media (max-width: 768px) {
+    position: relative;
+    left: unset;
+    transform: none;
+  }
 `;
