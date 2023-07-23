@@ -2,9 +2,14 @@ import React from "react";
 import { CenteredDiv, MainContainer } from "@/pages/Home/style";
 import FooterPage from "@/components/Footer";
 import Search from "@/components/ui/Search";
-import SongCardWrapper from "@/pages/SongCardWrapper";
+import SongCardWrapper from "@/components/SongCardWrapper";
+import { useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
 
 const Home: React.FC = () => {
+  const { currentSong } = useAppSelector(
+    (state: RootState) => state.songs
+  );
   return (
     <>
       <CenteredDiv>
@@ -15,7 +20,8 @@ const Home: React.FC = () => {
       <div style={{ padding: "20px" }}>
         <SongCardWrapper />
       </div>
-      <FooterPage/>
+      {currentSong && 
+      <FooterPage/>}
     </>
   );
 };

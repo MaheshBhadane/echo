@@ -15,8 +15,9 @@ const useStyles = createStyles((theme) => ({
   },
   card: {
     width: "100%", 
-    maxWidth: "400px",
+    maxWidth: "300px",
     backgroundColor: "#DAE1EC",
+    cursor: 'pointer',  
     [theme.breakpoints.lg]: {
       width: "50%", 
       margin: "20px", 

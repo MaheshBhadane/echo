@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { prevSong, setPlaying, nextSong } from "@/reducers/songsSlice";
-import { Button, Group, Image } from "@mantine/core";
+import { Group, Image } from "@mantine/core";
 import {
   IconPlayerPause,
   IconPlayerPlayFilled,
@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { formatTime } from "@/utils";
 import { Volume2, VolumeX, Volume1 } from "lucide-react";
 import userPic from "@/assets/musician.png";
+import Button from "@/components/ui/Button";
 
 const FooterPage = () => {
   const dispatch = useAppDispatch();
@@ -62,8 +63,8 @@ const FooterPage = () => {
           }}
         />
         <div>
-          <h6>{currentSong?.trackName}</h6>
-          <h6>{currentSong?.artistName}</h6>
+          <h6 style={{ margin: '0' }}>{currentSong?.trackName}</h6>
+          <h6 style={{ margin: '0' }}>{currentSong?.artistName}</h6>
         </div>
       </Group>
 

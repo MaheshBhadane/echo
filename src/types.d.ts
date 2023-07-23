@@ -18,6 +18,8 @@ interface Song {
     trackName: string;
     artistName: string;
     duration: number;
+    collectionName: string;
+    releaseDate: string;
   }
 
 interface SongCardProps {
@@ -25,8 +27,20 @@ interface SongCardProps {
     onClick: () => void;
 }
 
+interface Props {
+  children?: ReactNode;
+}
+
+interface State {
+  hasError: boolean;
+}
+
 interface Inputs {
   email: string;
   password: string;
 }
 
+interface SongModalProps {
+  song: Song | null;
+  onPlayPauseClick: () => void;
+}
