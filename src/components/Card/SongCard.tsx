@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Group, Image, Text } from "@mantine/core";
+import { Card, Flex, Group, Image, Text, Tooltip } from "@mantine/core";
 import { useState } from "react";
 import {
   IconPlayerPauseFilled,
@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { selectSong, setPlaying } from "@/reducers/songsSlice";
-import useStyles from "@/pages/SongCardWrapper/style";
+import useStyles from "@/components/SongCardWrapper/style";
+import Button from "@/components/ui/Button";
 
 const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
   const { classes } = useStyles();
@@ -26,7 +27,6 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
   };
 
   return (
-    <div onClick={onClick}>
       <Card
         key={song?.trackId}
         shadow="sm"
@@ -37,10 +37,11 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
         onMouseEnter={() => setHoveredSong(song?.trackId)}
         onMouseLeave={() => setHoveredSong(null)}
       >
-        <Card.Section>
+        <Card.Section onClick={onClick}>
+        <Tooltip label={song?.trackName}>
           <Image src={song?.artworkUrl100} height={180} alt={song?.trackName} />
+        </Tooltip>
         </Card.Section>
-
         <Group position="apart" mt="md" mb="xs">
           <Flex direction={"column"}>
             <Text weight={500}>
@@ -61,7 +62,6 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
           )}
         </Group>
       </Card>
-    </div>
   );
 };
 

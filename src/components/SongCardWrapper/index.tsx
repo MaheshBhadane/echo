@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useStyles from "@/pages/SongCardWrapper/style";
+import useStyles from "@/components/SongCardWrapper/style";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
@@ -7,8 +7,8 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { fetchSongs, selectSong, setPlaying } from "@/reducers/songsSlice";
 import Loader from "@/components/ui/Loader";
 import SongCard from "@/components/Card/SongCard";
-import { Group, Image, Modal } from "@mantine/core";
-import UserPic from '@/assets/musical-note.png';
+import { Modal } from "@mantine/core";
+import SongModal from "@/components/SongModal";
 
 const SongCardWrapper: React.FC = () => {
   const { classes } = useStyles();
@@ -42,15 +42,19 @@ const SongCardWrapper: React.FC = () => {
   const handleModalOpen = (song: Song) => {
     setSelectedSong(song);
     setIsModalOpen(true);
-    if (!isPlaying || currentSong?.trackId !== song?.trackId) {
-      dispatch(selectSong(song));
-    }
-    dispatch(setPlaying(!isPlaying || currentSong?.trackId !== song?.trackId));
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    dispatch(setPlaying(!isPlaying));
+  };
+
+  const handleSongClick = () => {
+    if (!isPlaying || currentSong?.trackId !== selectedSong?.trackId) {
+      dispatch(selectSong(selectedSong));
+    }
+    dispatch(
+      setPlaying(!isPlaying || currentSong?.trackId !== selectedSong?.trackId)
+    );
   };
 
   if (status === "loading") {
@@ -80,37 +84,12 @@ const SongCardWrapper: React.FC = () => {
           <h3>No Songs Available..!!</h3>
         )}
       </div>
-      <Modal
-        opened={isModalOpen}
-        onClose={handleModalClose}
-      >         
-        {currentSong || selectedSong ? (
-          <Group
-            style={{
-              alignItems: "center",
-              flexDirection: "column",
-              gap: "0.5rem",
-            }}
-          >
-            <Image
-              src={UserPic}
-              alt="song"
-              style={{
-                height: "5rem",
-                width: "5rem",
-              }}
-            />
-            <h2>{(currentSong || selectedSong)?.trackName}</h2>
-            <h3>{(currentSong || selectedSong)?.artistName}</h3>
-            <Image
-              src={(currentSong || selectedSong)?.artworkUrl100}
-              alt="song"
-              style={{
-                height: "15rem",
-                width: "15rem",
-              }}
-            />
-          </Group>
+      <Modal opened={isModalOpen} onClose={handleModalClose}>
+        {selectedSong ? (
+          <SongModal
+            song={selectedSong}
+            onPlayPauseClick={handleSongClick}
+          />
         ) : (
           <div>No song selected.</div>
         )}
@@ -120,4 +99,3 @@ const SongCardWrapper: React.FC = () => {
 };
 
 export default SongCardWrapper;
-
