@@ -19,7 +19,7 @@ const FooterPage = () => {
   const { isPlaying, currentSong } = useAppSelector((state) => state.songs);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.2);
 
   const audioRef = useRef<any>();
 
@@ -50,6 +50,10 @@ const FooterPage = () => {
       if (audioRef.current) audioRef.current.src = currentSong.previewUrl;
     }
   }, [currentSong]);
+
+  useEffect(() => {
+    audioRef.current.volume = volume;
+  }, []);
 
   return (
     <StyledFooter height={80} withBorder={false}>
