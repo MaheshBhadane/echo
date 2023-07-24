@@ -76,8 +76,7 @@ const FooterPage = () => {
         onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
         onDurationChange={() => setDuration(audioRef.current.duration)}
         onEnded={() => {
-          setCurrentTime(audioRef?.current?.duration);
-          dispatch(setPlaying(false));
+          handleNextSongClick()
         }}
       />
       <StyledGroup>
