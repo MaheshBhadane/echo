@@ -2,7 +2,7 @@ import { createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   inner: {
-    height: rem(60),
+    height: rem(70),
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",

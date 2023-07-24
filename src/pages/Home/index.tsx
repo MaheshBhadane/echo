@@ -5,23 +5,27 @@ import Search from "@/components/ui/Search";
 import SongCardWrapper from "@/components/SongCardWrapper";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
+import { useMediaQuery } from "@mantine/hooks";
 
 const Home: React.FC = () => {
-  const { currentSong } = useAppSelector(
-    (state: RootState) => state.songs
-  );
+  const { currentSong } = useAppSelector((state: RootState) => state.songs);
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
   return (
     <>
-      <CenteredDiv>
-        <MainContainer>
-          <Search />
-        </MainContainer>
-      </CenteredDiv>
-      <div style={{ padding: "20px" }}>
+      {isMobile ? (
+        <CenteredDiv>
+          <MainContainer>
+            <Search />
+          </MainContainer>
+        </CenteredDiv>
+      ) : (
+        <></>
+      )}
+      <div style={{ padding: "20px", paddingTop: `${!isMobile ? `50px` : `0px`}`, }}>
         <SongCardWrapper />
       </div>
-      {currentSong && 
-      <FooterPage/>}
+      {currentSong && <FooterPage />}
     </>
   );
 };
