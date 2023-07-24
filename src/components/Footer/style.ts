@@ -10,7 +10,7 @@ export const StyledFooter = styled(Footer)<StyledFooterProps>`
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #afb9c8;
+  background-color: #77a2ff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +20,6 @@ export const StyledFooter = styled(Footer)<StyledFooterProps>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     height: ${(props) => props.height + 80}px !important;
 
     & > div {

@@ -39,7 +39,7 @@ const PageNotFound = () => {
                 address, or the page has been moved to another URL.
             </Text>
             <Group position="center">
-                <Button size="md" onClick={handleClick}>
+                <Button variant='gradient' size="md" onClick={handleClick}>
                     Take Me Back
                 </Button>
             </Group>

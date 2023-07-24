@@ -4,9 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #373b53;
-  background-color: #f8f8fb;
-
+  color: #fafafa;
+  background-color: #fafafa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,5 +15,5 @@
 
 a {
   all: unset;
-  color: #373b53;
+  color: #ffffff;
 }

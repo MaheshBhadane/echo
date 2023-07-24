@@ -3,14 +3,19 @@ import { IconUserCircle, IconLogout } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { getInitials } from "@/utils";
+import { useAppDispatch } from "@/app/hooks";
+import { setPlaying } from "@/reducers/songsSlice";
 
 const MenuOptions = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const authUser = Cookies.get("authUser"); 
 
   const handleLogout = () => {
     Cookies.remove("authUser");
     window.location.pathname = "/";
+    dispatch(setPlaying(false));
+
   };
 
   const handleProfileClick = () => {

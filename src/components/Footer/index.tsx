@@ -19,7 +19,7 @@ const FooterPage = () => {
   const { isPlaying, currentSong } = useAppSelector((state) => state.songs);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.2);
 
   const audioRef = useRef<any>();
 
@@ -51,6 +51,10 @@ const FooterPage = () => {
     }
   }, [currentSong]);
 
+  useEffect(() => {
+    audioRef.current.volume = volume;
+  }, []);
+
   return (
     <StyledFooter height={80} withBorder={false}>
       <Group style={{ alignItems: "center", gap: "1rem" }}>
@@ -76,8 +80,7 @@ const FooterPage = () => {
         onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
         onDurationChange={() => setDuration(audioRef.current.duration)}
         onEnded={() => {
-          setCurrentTime(audioRef?.current?.duration);
-          dispatch(setPlaying(false));
+          handleNextSongClick()
         }}
       />
       <StyledGroup>
@@ -88,18 +91,18 @@ const FooterPage = () => {
             size="lg"
             onClick={handlePrevSongClick}
           >
-            <IconPlayerTrackPrevFilled size={"30px"} />
+            <IconPlayerTrackPrevFilled size={"24px"} />
           </Button>
           <Button
-            variant="subtle"
-            color="dark"
-            size="lg"
+            variant=""
+            color=""
+            size="sm"
             onClick={handleFooterButtonClick}
           >
             {isPlaying ? (
-              <IconPlayerPause size={"40px"} />
+              <IconPlayerPause size={"32px"} />
             ) : (
-              <IconPlayerPlayFilled size={"40px"} />
+              <IconPlayerPlayFilled size={"32px"} />
             )}
           </Button>
           <Button
@@ -108,7 +111,7 @@ const FooterPage = () => {
             size="lg"
             onClick={handleNextSongClick}
           >
-            <IconPlayerTrackNextFilled size={"30px"} />
+            <IconPlayerTrackNextFilled size={"24px"} />
           </Button>
         </Group>
         <Group style={{ alignItems: "center" }}>

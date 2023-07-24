@@ -64,7 +64,7 @@ const SongModal: React.FC<SongModalProps> = ({
             width: "15rem",
           }}
         />
-        <Button size="sm" color="gray" onClick={onPlayPauseClick}>
+        <Button size="sm" variant="gradient"  onClick={onPlayPauseClick}>
           {currentSong?.trackId === song?.trackId && isPlaying ? (
             <IconPlayerPauseFilled />
           ) : (
