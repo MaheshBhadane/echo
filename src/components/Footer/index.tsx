@@ -91,18 +91,18 @@ const FooterPage = () => {
             size="lg"
             onClick={handlePrevSongClick}
           >
-            <IconPlayerTrackPrevFilled size={"30px"} />
+            <IconPlayerTrackPrevFilled size={"24px"} />
           </Button>
           <Button
-            variant="subtle"
-            color="dark"
-            size="lg"
+            variant=""
+            color=""
+            size="sm"
             onClick={handleFooterButtonClick}
           >
             {isPlaying ? (
-              <IconPlayerPause size={"40px"} />
+              <IconPlayerPause size={"32px"} />
             ) : (
-              <IconPlayerPlayFilled size={"40px"} />
+              <IconPlayerPlayFilled size={"32px"} />
             )}
           </Button>
           <Button
@@ -111,7 +111,7 @@ const FooterPage = () => {
             size="lg"
             onClick={handleNextSongClick}
           >
-            <IconPlayerTrackNextFilled size={"30px"} />
+            <IconPlayerTrackNextFilled size={"24px"} />
           </Button>
         </Group>
         <Group style={{ alignItems: "center" }}>

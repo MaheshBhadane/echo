@@ -29,7 +29,7 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
   return (
       <Card
         key={song?.trackId}
-        shadow="sm"
+        shadow="md"
         padding="lg"
         radius="md"
         withBorder
@@ -52,7 +52,7 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
             </Text>
           </Flex>
           {hoveredSong === song?.trackId && (
-            <Button size="sm" color="gray" onClick={handleSongClick}>
+            <Button variant="gradient" size="sm" onClick={handleSongClick}>
               {song?.trackId === currentSong?.trackId && isPlaying ? (
                 <IconPlayerPauseFilled />
               ) : (

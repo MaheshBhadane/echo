@@ -15,12 +15,11 @@ const Search = () => {
   return (
     <Input
       style={{
-        color: "white",
-        backgroundColor: "#DAE1EC",
+        backgroundColor: "#5E86DA",
         borderRadius: "20px",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
       }}
-      icon={<IconSearch size="1.5rem" />}
+      icon={<IconSearch size="1.5rem" color="#5E86DA" />}
       radius="lg"
       placeholder="Search for new music.."
       size="sm"

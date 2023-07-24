@@ -12,7 +12,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
-    <header style={{ height: HEADER_HEIGHT, backgroundColor: "#DAE1EC" }}>
+    <header style={{ height: HEADER_HEIGHT, backgroundColor: "#77a2ff" }}>
       <nav className={classes.inner}>
         <NavLink to="/" style={{ cursor: "pointer" }}>
           <h2>Echo Player</h2>

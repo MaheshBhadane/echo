@@ -1,5 +1,5 @@
-import { Center,  Flex, Image, Paper, PasswordInput, Title } from "@mantine/core";
-import { useForm } from "react-hook-form";
+import { Center, Flex, Image, Paper, PasswordInput, Title } from "@mantine/core";
+import { Controller, useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@mantine/hooks";
@@ -15,6 +15,7 @@ const Login = () => {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors },
     } = useForm<Inputs>();
 
@@ -31,7 +32,7 @@ const Login = () => {
     const { classes } = useStyles();
     return (
         <Center>
-            <Flex justify={"center"} align={"center"} gap={"xl"}>
+            <Flex justify={"center"} align={"center"} gap={"5rem"}>
                 {!isMobile && (
                     <Image maw={450} height={500} src={main} alt="Hero" fit="contain" />
                 )}
@@ -41,21 +42,40 @@ const Login = () => {
                     </Title>
 
                     <form onSubmit={handleSubmit(submitHandler)}>
-                        <TextInput
-                            label="Email address"
-                            placeholder="hello@gmail.com"
-                            size="md"
-                            error={errors?.email?.message}
-                            {...register("email", validationRules.email)}
+                        <Controller
+                            control={control}
+                            name="email"
+                            rules={{ required: true }}
+                            render={({ field }) => (
+                                <TextInput
+                                    label="Email address"
+                                    placeholder="hello@gmail.com"
+                                    size="md"
+                                    {...field}
+                                    error={errors?.email?.message}
+                                    {...register("email", validationRules.email)}
+                                />
+                            )}
                         />
-                        <PasswordInput
-                            label="Password"
-                            placeholder="Your password"
-                            mt="md"
-                            size="md"
-                            error={errors?.password?.message}
-                            {...register("password", validationRules.password)}
+
+                        <Controller
+                            control={control}
+                            name="password"
+                            rules={{ required: true }}
+                            render={({ field }) => (
+                                <PasswordInput
+                                    label="Password"
+                                    placeholder="Your password"
+                                    mt="md"
+                                    size="md"
+                                    {...field}
+                                    error={errors?.password?.message}
+                                    {...register("password", validationRules.password)}
+                                />
+                            )}
                         />
+
+
                         <Button variant="gradient" color="#90CAF9" type="submit" fullWidth mt="xl" size="md">
                             Login
                         </Button>
