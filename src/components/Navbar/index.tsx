@@ -2,7 +2,7 @@ import { rem } from "@mantine/core";
 import { NavLink } from "react-router-dom";
 import useStyles from "@/components/Navbar/style";
 import MenuOptions from "@/components/Menu";
-import Search from "../ui/Search";
+import Search from "@/components/ui/Search";
 import { useMediaQuery } from "@mantine/hooks";
 
 const HEADER_HEIGHT = rem(70);
@@ -14,7 +14,9 @@ const Navbar = () => {
   return (
     <header style={{ height: HEADER_HEIGHT, backgroundColor: "#77a2ff" }}>
       <nav className={classes.inner}>
-        <NavLink to="/" style={{ cursor: "pointer" }}>
+        <NavLink to="/" style={{
+          cursor: "pointer", color: '#ffffff'
+        }}>
           <h2>Echo Player</h2>
         </NavLink>
         {!isMobile ? (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Group, Image } from "@mantine/core";
+import { Group } from "@mantine/core";
 import UserPic from "@/assets/musical-note.png";
 import Button from "@/components/ui/Button";
 import {
@@ -8,6 +8,7 @@ import {
 } from "@tabler/icons-react";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
+import Image from "@/components/ui/Image";
 
 const SongModal: React.FC<SongModalProps> = ({
   song,

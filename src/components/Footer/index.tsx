@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { prevSong, setPlaying, nextSong } from "@/reducers/songsSlice";
-import { Group, Image } from "@mantine/core";
+import { Group } from "@mantine/core";
 import {
   IconPlayerPause,
   IconPlayerPlayFilled,
@@ -13,6 +13,7 @@ import { formatTime } from "@/utils";
 import { Volume2, VolumeX, Volume1 } from "lucide-react";
 import userPic from "@/assets/musician.png";
 import Button from "@/components/ui/Button";
+import Image from "@/components/ui/Image";
 
 const FooterPage = () => {
   const dispatch = useAppDispatch();
@@ -78,7 +79,7 @@ const FooterPage = () => {
         ref={audioRef}
         autoPlay
         onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
-        onDurationChange={() => setDuration(audioRef.current.duration)}
+        onDurationChange={() => setDuration(audioRef?.current?.duration)}
         onEnded={() => {
           handleNextSongClick()
         }}
@@ -125,6 +126,7 @@ const FooterPage = () => {
               audioRef.current.currentTime = parseFloat(e.target.value);
               setCurrentTime(parseFloat(e.target.value));
             }}
+            style={{width:'20rem'}}
           />
           <span>{formatTime(duration)}</span>
         </Group>

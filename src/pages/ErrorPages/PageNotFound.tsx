@@ -1,6 +1,5 @@
 import {
     Title,
-    Text,
     Container,
     Group,
 } from "@mantine/core";
@@ -9,6 +8,7 @@ import error from '@/assets/404.gif'
 import Cookies from "js-cookie";
 import useStyles from "@/components/Navbar/style";
 import Button from "@/components/ui/Button";
+import Text from "@/components/ui/Text";
 
 const PageNotFound = () => {
     const { classes } = useStyles();

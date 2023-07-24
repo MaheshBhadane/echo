@@ -1,4 +1,4 @@
-import { Center, Flex, Image, Paper, PasswordInput, Title } from "@mantine/core";
+import { Center, Flex, Paper, PasswordInput, Title } from "@mantine/core";
 import { Controller, useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import TextInput from "@/components/ui/TextInput";
 import { validationRules } from "@/pages/Login/helper";
 import Button from "@/components/ui/Button";
 import main from "@/assets/hero.svg"
+import Image from "@/components/ui/Image";
 
 const Login = () => {
     const isMobile = useMediaQuery("(max-width: 640px)");
