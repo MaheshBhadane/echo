@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Paper, Grid, Col, Image, Text, Divider } from '@mantine/core';
+import { Container, Paper, Grid, Col, Divider } from '@mantine/core';
 import usePic from "@/assets/user.jpg";
 import Cookies from "js-cookie";
 import { getInitials } from '@/utils';
+import Text from '@/components/ui/Text';
+import Image from '@/components/ui/Image';
 
 const Profile: React.FC = () => {
 
@@ -18,7 +20,9 @@ const Profile: React.FC = () => {
 
     return (
         <Container size="sm">
-            <Paper shadow='lg' radius='xl' style={{ marginTop: '2rem', backgroundColor: "#DAE1EC" }}>
+            <Paper shadow='lg' radius='xl' style={{
+                marginTop: '2rem', backgroundColor: "rgba(229, 229, 230,0.3)",
+            }}>
                 <Grid gutter="lg">
                     <Col span={12} sm={12} md={4}>
                         <Image src={usePic} alt="User avatar" radius='xl' height={200} style={{ padding: '20px' }} />
@@ -27,17 +31,17 @@ const Profile: React.FC = () => {
                         <Text size="xl" weight={700} style={{ marginBottom: '0.5rem' }}>
                             {user.name}
                         </Text>
-                        <Text size="md" color="gray" style={{ marginBottom: '1rem' }}>
+                        <Text style={{ marginBottom: '1rem' }}>
                             {user.email}
                         </Text>
                         <Divider />
                         <Text size="md" style={{ marginTop: '1rem' }}>
                             {user.bio}
                         </Text>
-                        <Text size="md" color="gray" style={{ marginTop: '1rem' }}>
+                        <Text style={{ marginTop: '1rem' }}>
                             <strong>Location:</strong> {user.location}
                         </Text>
-                        <Text size="md" color="gray">
+                        <Text>
                             <strong>Website:</strong>{' '}
                             <a href={user.website} target="_blank" rel="noopener noreferrer">
                                 {user.website}
