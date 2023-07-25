@@ -8,8 +8,6 @@ interface SongsState {
   searchTerm: string;
   currentSong: Song | null;
   isPlaying: boolean;
-  volume: number; 
-  currentProgress:number;
 }
 interface Song {
     trackId: number;
