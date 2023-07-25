@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "@/reducers/initialState";
 import { findCurrentSongIndex } from "@/reducers/helper";
-import { fetchSongs, searchSongs } from "@/reducers/songThunk";
+import { fetchSongs, searchSongs } from "@/reducers/songsThunk";
 
 const songsSlice = createSlice({
   name: "songs",
