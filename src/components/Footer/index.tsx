@@ -14,6 +14,7 @@ import { Volume2, VolumeX, Volume1 } from "lucide-react";
 import userPic from "@/assets/musician.png";
 import Button from "@/components/ui/Button";
 import Image from "@/components/ui/Image";
+import { useMediaQuery } from "@mantine/hooks";
 
 const FooterPage = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const FooterPage = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.2);
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   const audioRef = useRef<any>();
 
@@ -58,7 +60,7 @@ const FooterPage = () => {
 
   return (
     <StyledFooter height={80} withBorder={false}>
-      <Group style={{ alignItems: "center", gap: "1rem" }}>
+     { !isMobile  && <Group style={{ alignItems: "center", gap: "1rem" }}>
         <Image
           src={currentSong ? currentSong?.artworkUrl100 : userPic}
           alt="song"
@@ -71,7 +73,7 @@ const FooterPage = () => {
           <h6 style={{ margin: '0' }}>{currentSong?.trackName}</h6>
           <h6 style={{ margin: '0' }}>{currentSong?.artistName}</h6>
         </div>
-      </Group>
+      </Group>}
 
       <audio
         id="audio1"
@@ -126,13 +128,13 @@ const FooterPage = () => {
               audioRef.current.currentTime = parseFloat(e.target.value);
               setCurrentTime(parseFloat(e.target.value));
             }}
-            style={{width:'20rem'}}
+            style={{width:`${isMobile ? '10rem' : '20rem'}`}}
           />
           <span>{formatTime(duration)}</span>
         </Group>
       </StyledGroup>
 
-      <Group style={{ alignItems: "center", gap: "1rem" }}>
+      {!isMobile && <Group style={{ alignItems: "center", gap: "1rem" }}>
         {volume <= 1 && volume > 0.5 ? (
           <Volume2 color="black" size={25} onClick={() => setVolume(0.5)} />
         ) : null}
@@ -153,7 +155,7 @@ const FooterPage = () => {
             setVolume(Number(event.target.value));
           }}
         />
-      </Group>
+      </Group>}
     </StyledFooter>
   );
 };
