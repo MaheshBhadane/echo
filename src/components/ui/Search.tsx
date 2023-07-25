@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Input } from "@mantine/core";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { debounce } from "lodash";
-import { searchSongs } from "@/reducers/songsSlice";
+import { searchSongs } from "@/reducers/songThunk";
 
 const Search = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();

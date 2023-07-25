@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { fetchSongs, selectSong, setPlaying } from "@/reducers/songsSlice";
+import { selectSong, setPlaying } from "@/reducers/songsSlice";
 import Loader from "@/components/ui/Loader";
 import SongCard from "@/components/Card/SongCard";
 import { Modal } from "@mantine/core";
 import SongModal from "@/components/SongModal";
+import { fetchSongs } from "@/reducers/songThunk";
 
 const SongCardWrapper: React.FC = () => {
   const { classes } = useStyles();
@@ -24,7 +25,7 @@ const SongCardWrapper: React.FC = () => {
     const isBottom =
       window.innerHeight + window.scrollY >= document.body.scrollHeight;
     if (isBottom) {
-      setOffset((prevOffset) => prevOffset + 1);
+      setOffset((prevOffset) => prevOffset + 21);
     }
   };
 
@@ -57,14 +58,6 @@ const SongCardWrapper: React.FC = () => {
     );
   };
 
-  if (status === "loading") {
-    return (
-      <div className={classes.loaderContainer}>
-        <Loader />
-      </div>
-    );
-  }
-
   if (status === "failed") {
     return <div>Error: {error}</div>;
   }
@@ -73,23 +66,28 @@ const SongCardWrapper: React.FC = () => {
     <>
       <div className={classes.cardContainer}>
         {songs?.length > 0 ? (
-          songs.map((song: Song, i: number) => (
-            <SongCard
-              key={i}
-              song={song}
-              onClick={() => handleModalOpen(song)}
-            />
-          ))
+          <>
+            {songs.map((song: Song, i: number) => (
+              <SongCard
+                key={i}
+                song={song}
+                onClick={() => handleModalOpen(song)}
+              />
+            ))}
+            <br />
+            {status === "loading" ? (
+              <div className={classes.loaderContainer}>
+                <Loader />
+              </div>
+            ) : null}
+          </>
         ) : (
           <h3>No Songs Available..!!</h3>
         )}
       </div>
       <Modal opened={isModalOpen} onClose={handleModalClose}>
         {selectedSong ? (
-          <SongModal
-            song={selectedSong}
-            onPlayPauseClick={handleSongClick}
-          />
+          <SongModal song={selectedSong} onPlayPauseClick={handleSongClick} />
         ) : (
           <div>No song selected.</div>
         )}
