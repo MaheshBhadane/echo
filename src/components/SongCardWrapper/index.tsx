@@ -9,11 +9,12 @@ import Loader from "@/components/ui/Loader";
 import SongCard from "@/components/Card/SongCard";
 import { Modal } from "@mantine/core";
 import SongModal from "@/components/SongModal";
-import { fetchSongs } from "@/reducers/songThunk";
+import { fetchSongs } from "@/reducers/songsThunk";
+import Page500 from "@/pages/ErrorPages/Page500";
 
 const SongCardWrapper: React.FC = () => {
   const { classes } = useStyles();
-  const { songs, status, error, currentSong, isPlaying } = useAppSelector(
+  const { songs, status, currentSong, isPlaying } = useAppSelector(
     (state: RootState) => state.songs
   );
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>();
@@ -59,7 +60,7 @@ const SongCardWrapper: React.FC = () => {
   };
 
   if (status === "failed") {
-    return <div>Error: {error}</div>;
+    return <div><Page500/></div>;
   }
 
   return (
