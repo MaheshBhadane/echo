@@ -41,7 +41,7 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
       >
         <CardSection onClick={onClick}>
         <Tooltip label={song?.trackName}>
-          <Image src={song?.artworkUrl100} height={180} alt={song?.trackName} />
+          <Image src={song?.artworkUrl100} height={180} alt={song?.trackName} style={{cursor: 'pointer'}} />
         </Tooltip>
         </CardSection>
         <Group position="apart" mt="md" mb="xs">

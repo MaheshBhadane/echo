@@ -12,16 +12,30 @@ const Navbar = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  
+
   return (
-    <header style={{ height: HEADER_HEIGHT, backgroundColor: "#77a2ff" }}>
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: HEADER_HEIGHT,
+        backgroundColor: "#77a2ff",
+        zIndex: 100,
+      }}
+    >
       <nav className={classes.inner}>
-        <NavLink to="/" style={{
-          cursor: "pointer", color: '#ffffff'
-        }}>
+        <NavLink
+          to="/"
+          style={{
+            cursor: "pointer",
+            color: "#ffffff",
+          }}
+        >
           <h2>Echo Player</h2>
         </NavLink>
-        {!isMobile && isHomePage  ? (
+        {!isMobile && isHomePage ? (
           <div style={{ width: "30rem" }}>
             <Search />
           </div>
