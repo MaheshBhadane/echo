@@ -60,7 +60,11 @@ const SongCardWrapper: React.FC = () => {
   };
 
   if (status === "failed") {
-    return <div><Page500/></div>;
+    return (
+      <div>
+        <Page500 />
+      </div>
+    );
   }
 
   return (
@@ -86,7 +90,14 @@ const SongCardWrapper: React.FC = () => {
           <h3>No Songs Available..!!</h3>
         )}
       </div>
-      <Modal opened={isModalOpen} onClose={handleModalClose}>
+      <Modal
+        opened={isModalOpen}
+        onClose={handleModalClose}
+        overlayProps={{
+          opacity: 0.55,
+          blur: 3,
+        }}
+      >
         {selectedSong ? (
           <SongModal song={selectedSong} onPlayPauseClick={handleSongClick} />
         ) : (

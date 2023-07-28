@@ -4,10 +4,12 @@ import { Outlet } from "react-router-dom";
 const ProtectedLayout = () => {
   return (
     <>
+      <main>
         <Navbar />
-        <main>
+        <div style={{ paddingTop: "70px" }}>
           <Outlet />
-        </main>
+        </div>
+      </main>
     </>
   );
 };

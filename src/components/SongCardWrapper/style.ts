@@ -17,7 +17,6 @@ const useStyles = createStyles((theme) => ({
     width: "100%", 
     maxWidth: "300px",
     backgroundColor: "rgba(229, 229, 230,0.3)",
-    cursor: 'pointer',  
     [theme.breakpoints.lg]: {
       width: "50%", 
       margin: "20px", 

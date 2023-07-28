@@ -9,6 +9,7 @@ import {
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import Image from "@/components/ui/Image";
+import { useMediaQuery } from "@mantine/hooks";
 
 const SongModal: React.FC<SongModalProps> = ({
   song,
@@ -17,6 +18,8 @@ const SongModal: React.FC<SongModalProps> = ({
     const {currentSong, isPlaying } = useAppSelector(
         (state: RootState) => state.songs
       );
+      const isMobile = useMediaQuery("(max-width: 640px)");
+
   return (
     <>
       <Group
@@ -61,8 +64,8 @@ const SongModal: React.FC<SongModalProps> = ({
           src={song?.artworkUrl100}
           alt="song"
           style={{
-            height: "15rem",
-            width: "15rem",
+            height: `${isMobile ? "6rem": "15rem"}`,
+            width: `${isMobile ? "6rem": "15rem"}`,
           }}
         />
         <Button size="sm" variant="gradient"  onClick={onPlayPauseClick}>
