@@ -58,7 +58,13 @@ const SongCardWrapper: React.FC = () => {
       setPlaying(!isPlaying || currentSong?.trackId !== selectedSong?.trackId)
     );
   };
-
+  if (status === "loading") {
+    return (
+      <div className={classes.loaderContainer}>
+        <Loader />
+      </div>
+    );
+  }
   if (status === "failed") {
     return (
       <div>
@@ -71,21 +77,13 @@ const SongCardWrapper: React.FC = () => {
     <>
       <div className={classes.cardContainer}>
         {songs?.length > 0 ? (
-          <>
-            {songs.map((song: Song, i: number) => (
-              <SongCard
-                key={i}
-                song={song}
-                onClick={() => handleModalOpen(song)}
-              />
-            ))}
-            <br />
-            {status === "loading" ? (
-              <div className={classes.loaderContainer}>
-                <Loader />
-              </div>
-            ) : null}
-          </>
+          songs.map((song: Song, i: number) => (
+            <SongCard
+              key={i}
+              song={song}
+              onClick={() => handleModalOpen(song)}
+            />
+          ))
         ) : (
           <h3>No Songs Available..!!</h3>
         )}
