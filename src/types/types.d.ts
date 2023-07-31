@@ -5,26 +5,58 @@ interface iTunesApiResponse {
 }
 interface SongsState {
   songs: Song[];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-  searchTerm: string;
-  currentSong: Song | null;
-  isPlaying: boolean;
+  status?: "idle" | "loading" | "succeeded" | "failed";
+  error?: string | null;
+  searchTerm?: string;
+  currentSong?: Song | null;
+  isPlaying?: boolean;
 }
 interface Song {
-  trackId: number;
-  previewUrl: string;
-  artworkUrl100: string;
-  trackName: string;
+  artistId: number;
   artistName: string;
-  duration: number;
+  artistViewUrl: string;
+  artworkUrl30: string;
+  artworkUrl60: string;
+  artworkUrl100: string;
+  collectionCensoredName: string;
+  collectionExplicitness: string;
+  collectionId: number;
   collectionName: string;
+  collectionPrice: number;
+  collectionViewUrl: string;
+  country: string;
+  currency: string;
+  discCount: number;
+  discNumber: number;
+  isStreamable: boolean;
+  kind: string;
+  previewUrl: string;
+  primaryGenreName: string;
   releaseDate: string;
+  trackCensoredName: string;
+  trackCount: number;
+  trackExplicitness: string;
+  trackId: number;
+  trackName: string;
+  trackNumber: number;
+  trackPrice: number;
+  trackTimeMillis: number;
+  trackViewUrl: string;
+  wrapperType: string;
+  copyright: string;
+  description: string;
 }
 
 interface SongCardProps {
   song: Song;
   onClick: () => void;
+  currentSong?: Song | null;
+  isPlaying?: boolean;
+}
+
+interface FooterProps {
+  currentSong?: Song | null;
+  isPlaying?: boolean;
 }
 
 interface Props {
@@ -43,4 +75,6 @@ interface Inputs {
 interface SongModalProps {
   song: Song | null;
   onPlayPauseClick: () => void;
+  currentSong?: Song | null;
+  isPlaying?: boolean;
 }

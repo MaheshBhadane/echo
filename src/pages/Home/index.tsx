@@ -8,7 +8,9 @@ import { RootState } from "@/app/store";
 import { useMediaQuery } from "@mantine/hooks";
 
 const Home: React.FC = () => {
-  const { currentSong } = useAppSelector((state: RootState) => state.songs);
+  const { songs, status, currentSong, isPlaying } = useAppSelector(
+    (state: RootState) => state.songs
+  );
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
@@ -25,9 +27,16 @@ const Home: React.FC = () => {
       <div
         style={{ padding: "20px", paddingTop: `${!isMobile ? "50px" : "0px"}` }}
       >
-        <SongCardWrapper />
+        <SongCardWrapper
+          songs={songs}
+          status={status}
+          currentSong={currentSong}
+          isPlaying={isPlaying}
+        />
       </div>
-      {currentSong && <FooterPage />}
+      {currentSong && (
+        <FooterPage currentSong={currentSong} isPlaying={isPlaying} />
+      )}
     </>
   );
 };

@@ -6,15 +6,15 @@ import {
   IconPlayerPauseFilled,
   IconPlayerPlayFilled
 } from "@tabler/icons-react";
-import { useAppSelector } from "@/app/hooks";
-import { RootState } from "@/app/store";
 import Image from "@/components/ui/Image";
 import { useMediaQuery } from "@mantine/hooks";
 
-const SongModal: React.FC<SongModalProps> = ({ song, onPlayPauseClick }) => {
-  const { currentSong, isPlaying } = useAppSelector(
-    (state: RootState) => state.songs
-  );
+const SongModal: React.FC<SongModalProps> = ({
+  song,
+  onPlayPauseClick,
+  isPlaying,
+  currentSong
+}) => {
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (

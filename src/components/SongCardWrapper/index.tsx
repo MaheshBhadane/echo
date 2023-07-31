@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import React, { useEffect, useState } from "react";
 import useStyles from "@/components/SongCardWrapper/style";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { selectSong, setPlaying } from "@/reducers/songsSlice";
@@ -12,11 +12,14 @@ import SongModal from "@/components/SongModal";
 import { fetchSongs } from "@/reducers/songsThunk";
 import Page500 from "@/pages/ErrorPages/Page500";
 
-const SongCardWrapper: React.FC = () => {
+const SongCardWrapper: React.FC<SongsState> = ({
+  songs,
+  status,
+  currentSong,
+  isPlaying
+}) => {
   const { classes } = useStyles();
-  const { songs, status, currentSong, isPlaying } = useAppSelector(
-    (state: RootState) => state.songs
-  );
+
   const dispatch = useDispatch<ThunkDispatch<RootState, null, any>>();
   const [offset, setOffset] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,10 +80,12 @@ const SongCardWrapper: React.FC = () => {
     <>
       <div className={classes.cardContainer}>
         {songs?.length > 0 ? (
-          songs.map((song: Song, i: number) => (
+          songs?.map((song: Song, i: number) => (
             <SongCard
               key={i}
               song={song}
+              currentSong={currentSong}
+              isPlaying={isPlaying}
               onClick={() => handleModalOpen(song)}
             />
           ))
@@ -93,11 +98,16 @@ const SongCardWrapper: React.FC = () => {
         onClose={handleModalClose}
         overlayProps={{
           opacity: 0.55,
-          blur: 3,
+          blur: 3
         }}
       >
         {selectedSong ? (
-          <SongModal song={selectedSong} onPlayPauseClick={handleSongClick} />
+          <SongModal
+            song={selectedSong}
+            onPlayPauseClick={handleSongClick}
+            currentSong={currentSong}
+            isPlaying={isPlaying}
+          />
         ) : (
           <div>No song selected.</div>
         )}
