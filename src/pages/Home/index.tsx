@@ -22,7 +22,9 @@ const Home: React.FC = () => {
       ) : (
         <></>
       )}
-      <div style={{ padding: "20px", paddingTop: `${!isMobile ? `50px` : `0px`}`, }}>
+      <div
+        style={{ padding: "20px", paddingTop: `${!isMobile ? "50px" : "0px"}` }}
+      >
         <SongCardWrapper />
       </div>
       {currentSong && <FooterPage />}
