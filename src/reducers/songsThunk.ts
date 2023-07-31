@@ -11,7 +11,7 @@ export const fetchSongs = createAsyncThunk(
     const data = response.data.results?.map((song) => {
       return {
         ...song,
-        artworkUrl100: song?.artworkUrl100?.replace("100x100", "900x900"),
+        artworkUrl100: song?.artworkUrl100?.replace("100x100", "900x900")
       };
     });
     return data;
@@ -26,6 +26,12 @@ export const searchSongs = createAsyncThunk(
     const response = await axios.get<iTunesApiResponse>(
       `https://itunes.apple.com/search/?term=${searchTerm}&offset=${offset}&limit=20`
     );
-    return response.data.results;
+    const data = response.data.results?.map((song) => {
+      return {
+        ...song,
+        artworkUrl100: song?.artworkUrl100?.replace("100x100", "900x900")
+      };
+    });
+    return data;
   }
 );

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch } from "@/app/hooks";
 import { prevSong, setPlaying, nextSong } from "@/reducers/songsSlice";
 import { Group } from "@mantine/core";
 import {
@@ -16,9 +16,8 @@ import Button from "@/components/ui/Button";
 import Image from "@/components/ui/Image";
 import { useMediaQuery } from "@mantine/hooks";
 
-const FooterPage = () => {
+const FooterPage: React.FC<FooterProps> = ({ isPlaying, currentSong }) => {
   const dispatch = useAppDispatch();
-  const { isPlaying, currentSong } = useAppSelector((state) => state.songs);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.2);

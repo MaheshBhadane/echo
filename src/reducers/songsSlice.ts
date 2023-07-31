@@ -16,7 +16,8 @@ const songsSlice = createSlice({
     prevSong: (state) => {
       const currentIndex = findCurrentSongIndex(state);
       if (currentIndex !== -1) {
-        const prevIndex = (currentIndex - 1 + state.songs.length) % state.songs.length;
+        const prevIndex =
+          (currentIndex - 1 + state.songs.length) % state.songs.length;
         state.currentSong = state.songs[prevIndex];
       }
     },
@@ -45,16 +46,20 @@ const songsSlice = createSlice({
         state.status = "loading";
         state.songs = [];
       })
-      .addCase(searchSongs.fulfilled, (state, action: PayloadAction<Song[]>) => {
-        state.status = "succeeded";
-        state.songs = action.payload;
-      })
+      .addCase(
+        searchSongs.fulfilled,
+        (state, action: PayloadAction<Song[]>) => {
+          state.status = "succeeded";
+          state.songs = action.payload;
+        }
+      )
       .addCase(searchSongs.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message as string;
       });
-  },
+  }
 });
 
-export const { selectSong, setPlaying, prevSong, nextSong } = songsSlice.actions;
+export const { selectSong, setPlaying, prevSong, nextSong } =
+  songsSlice.actions;
 export default songsSlice.reducer;

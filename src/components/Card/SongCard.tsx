@@ -5,20 +5,20 @@ import {
   IconPlayerPlayFilled
 } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "@/app/hooks";
-import { RootState } from "@/app/store";
 import { selectSong, setPlaying } from "@/reducers/songsSlice";
 import useStyles from "@/components/SongCardWrapper/style";
 import Button from "@/components/ui/Button";
 import Text from "@/components/ui/Text";
 import Card from "@/components/ui/Card";
 
-const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
+const SongCard: React.FC<SongCardProps> = ({
+  song,
+  onClick,
+  isPlaying,
+  currentSong
+}) => {
   const { classes } = useStyles();
   const [hoveredSong, setHoveredSong] = useState<number | null>(null);
-  const { isPlaying, currentSong } = useAppSelector(
-    (state: RootState) => state.songs
-  );
   const dispatch = useDispatch();
 
   const handleSongClick = () => {
