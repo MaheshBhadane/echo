@@ -5,7 +5,7 @@ import {
   IconPlayerPause,
   IconPlayerPlayFilled,
   IconPlayerTrackPrevFilled,
-  IconPlayerTrackNextFilled,
+  IconPlayerTrackNextFilled
 } from "@tabler/icons-react";
 import { StyledFooter, StyledGroup } from "@/components/Footer/style";
 import { useEffect, useRef, useState } from "react";
@@ -60,20 +60,22 @@ const FooterPage = () => {
 
   return (
     <StyledFooter height={80} withBorder={false}>
-     { !isMobile  && <Group style={{ alignItems: "center", gap: "1rem" }}>
-        <Image
-          src={currentSong ? currentSong?.artworkUrl100 : userPic}
-          alt="song"
-          style={{
-            height: "3rem",
-            width: "3rem",
-          }}
-        />
-        <div>
-          <h6 style={{ margin: '0' }}>{currentSong?.trackName}</h6>
-          <h6 style={{ margin: '0' }}>{currentSong?.artistName}</h6>
-        </div>
-      </Group>}
+      {!isMobile && (
+        <Group style={{ alignItems: "center", gap: "1rem" }}>
+          <Image
+            src={currentSong ? currentSong?.artworkUrl100 : userPic}
+            alt="song"
+            style={{
+              height: "3rem",
+              width: "3rem"
+            }}
+          />
+          <div>
+            <h6 style={{ margin: "0" }}>{currentSong?.trackName}</h6>
+            <h6 style={{ margin: "0" }}>{currentSong?.artistName}</h6>
+          </div>
+        </Group>
+      )}
 
       <audio
         id="audio1"
@@ -83,7 +85,7 @@ const FooterPage = () => {
         onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
         onDurationChange={() => setDuration(audioRef?.current?.duration)}
         onEnded={() => {
-          handleNextSongClick()
+          handleNextSongClick();
         }}
       />
       <StyledGroup>
@@ -128,34 +130,36 @@ const FooterPage = () => {
               audioRef.current.currentTime = parseFloat(e.target.value);
               setCurrentTime(parseFloat(e.target.value));
             }}
-            style={{width:`${isMobile ? '10rem' : '20rem'}`}}
+            style={{ width: `${isMobile ? "10rem" : "20rem"}` }}
           />
           <span>{formatTime(duration)}</span>
         </Group>
       </StyledGroup>
 
-      {!isMobile && <Group style={{ alignItems: "center", gap: "1rem" }}>
-        {volume <= 1 && volume > 0.5 ? (
-          <Volume2 color="black" size={25} onClick={() => setVolume(0.5)} />
-        ) : null}
-        {volume <= 0.5 && volume > 0 ? (
-          <Volume1 color="black" size={25} onClick={() => setVolume(1)} />
-        ) : null}
-        {!volume ? (
-          <VolumeX color="black" size={25} onClick={() => setVolume(0)} />
-        ) : null}
-        <input
-          type="range"
-          step="any"
-          value={volume}
-          min={0}
-          max={1}
-          onChange={(event) => {
-            audioRef.current.volume = event.target.value;
-            setVolume(Number(event.target.value));
-          }}
-        />
-      </Group>}
+      {!isMobile && (
+        <Group style={{ alignItems: "center", gap: "1rem" }}>
+          {volume <= 1 && volume > 0.5 ? (
+            <Volume2 color="black" size={25} onClick={() => setVolume(0.5)} />
+          ) : null}
+          {volume <= 0.5 && volume > 0 ? (
+            <Volume1 color="black" size={25} onClick={() => setVolume(1)} />
+          ) : null}
+          {!volume ? (
+            <VolumeX color="black" size={25} onClick={() => setVolume(0)} />
+          ) : null}
+          <input
+            type="range"
+            step="any"
+            value={volume}
+            min={0}
+            max={1}
+            onChange={(event) => {
+              audioRef.current.volume = event.target.value;
+              setVolume(Number(event.target.value));
+            }}
+          />
+        </Group>
+      )}
     </StyledFooter>
   );
 };

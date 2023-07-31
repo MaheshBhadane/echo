@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-unused-vars */
 interface iTunesApiResponse {
   results: Song[];
 }
@@ -10,19 +12,19 @@ interface SongsState {
   isPlaying: boolean;
 }
 interface Song {
-    trackId: number;
-    previewUrl: string;
-    artworkUrl100: string;
-    trackName: string;
-    artistName: string;
-    duration: number;
-    collectionName: string;
-    releaseDate: string;
-  }
+  trackId: number;
+  previewUrl: string;
+  artworkUrl100: string;
+  trackName: string;
+  artistName: string;
+  duration: number;
+  collectionName: string;
+  releaseDate: string;
+}
 
 interface SongCardProps {
-    song: Song;
-    onClick: () => void;
+  song: Song;
+  onClick: () => void;
 }
 
 interface Props {
