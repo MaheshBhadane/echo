@@ -4,21 +4,18 @@ import UserPic from "@/assets/musical-note.png";
 import Button from "@/components/ui/Button";
 import {
   IconPlayerPauseFilled,
-  IconPlayerPlayFilled,
+  IconPlayerPlayFilled
 } from "@tabler/icons-react";
 import { useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import Image from "@/components/ui/Image";
 import { useMediaQuery } from "@mantine/hooks";
 
-const SongModal: React.FC<SongModalProps> = ({
-  song,
-  onPlayPauseClick,
-}) => {
-    const {currentSong, isPlaying } = useAppSelector(
-        (state: RootState) => state.songs
-      );
-      const isMobile = useMediaQuery("(max-width: 640px)");
+const SongModal: React.FC<SongModalProps> = ({ song, onPlayPauseClick }) => {
+  const { currentSong, isPlaying } = useAppSelector(
+    (state: RootState) => state.songs
+  );
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
     <>
@@ -26,7 +23,7 @@ const SongModal: React.FC<SongModalProps> = ({
         style={{
           alignItems: "center",
           flexDirection: "column",
-          gap: "0.5",
+          gap: "0.5"
         }}
       >
         <Image
@@ -36,16 +33,14 @@ const SongModal: React.FC<SongModalProps> = ({
             height: "4rem",
             width: "4rem",
             alignItems: "center",
-            flexDirection: "column",
+            flexDirection: "column"
           }}
         />
       </Group>
       <Group>
         <h3 style={{ margin: "0" }}>Track Name: {song?.trackName}</h3>
         <h4 style={{ margin: "0" }}>Artist Name: {song?.artistName}</h4>
-        <h4 style={{ margin: "0" }}>
-          Collection Name: {song?.collectionName}
-        </h4>
+        <h4 style={{ margin: "0" }}>Collection Name: {song?.collectionName}</h4>
         <h4 style={{ margin: "0" }}>
           Released on: {song?.releaseDate?.split("T")[0].replace(/-/g, "-")}
         </h4>
@@ -57,18 +52,18 @@ const SongModal: React.FC<SongModalProps> = ({
           flexDirection: "row",
           justifyContent: "center",
           gap: "2rem",
-          marginTop: "20px",
+          marginTop: "20px"
         }}
       >
         <Image
           src={song?.artworkUrl100}
           alt="song"
           style={{
-            height: `${isMobile ? "6rem": "15rem"}`,
-            width: `${isMobile ? "6rem": "15rem"}`,
+            height: `${isMobile ? "6rem" : "15rem"}`,
+            width: `${isMobile ? "6rem" : "15rem"}`
           }}
         />
-        <Button size="sm" variant="gradient"  onClick={onPlayPauseClick}>
+        <Button size="sm" variant="gradient" onClick={onPlayPauseClick}>
           {currentSong?.trackId === song?.trackId && isPlaying ? (
             <IconPlayerPauseFilled />
           ) : (

@@ -2,7 +2,7 @@ import { CardSection, Flex, Group, Image, Tooltip } from "@mantine/core";
 import { useState } from "react";
 import {
   IconPlayerPauseFilled,
-  IconPlayerPlayFilled,
+  IconPlayerPlayFilled
 } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/app/hooks";
@@ -29,41 +29,46 @@ const SongCard: React.FC<SongCardProps> = ({ song, onClick }) => {
   };
 
   return (
-      <Card
-        key={song?.trackId}
-        shadow="md"
-        padding="lg"
-        radius="md"
-        withBorder
-        className={classes.card}
-        onMouseEnter={() => setHoveredSong(song?.trackId)}
-        onMouseLeave={() => setHoveredSong(null)}
-      >
-        <CardSection onClick={onClick}>
+    <Card
+      key={song?.trackId}
+      shadow="md"
+      padding="lg"
+      radius="md"
+      withBorder
+      className={classes.card}
+      onMouseEnter={() => setHoveredSong(song?.trackId)}
+      onMouseLeave={() => setHoveredSong(null)}
+    >
+      <CardSection onClick={onClick}>
         <Tooltip label={song?.trackName}>
-          <Image src={song?.artworkUrl100} height={180} alt={song?.trackName} style={{cursor: 'pointer'}} />
+          <Image
+            src={song?.artworkUrl100}
+            height={180}
+            alt={song?.trackName}
+            style={{ cursor: "pointer" }}
+          />
         </Tooltip>
-        </CardSection>
-        <Group position="apart" mt="md" mb="xs">
-          <Flex direction={"column"}>
-            <Text weight={500}>
-              {song?.trackName?.split(" ").slice(0, 4).join(" ")}
-            </Text>
-            <Text size="sm">
-              {song?.artistName?.split(" ").slice(0, 2).join(" ")}
-            </Text>
-          </Flex>
-          {hoveredSong === song?.trackId && (
-            <Button variant="gradient" size="sm" onClick={handleSongClick}>
-              {song?.trackId === currentSong?.trackId && isPlaying ? (
-                <IconPlayerPauseFilled />
-              ) : (
-                <IconPlayerPlayFilled />
-              )}
-            </Button>
-          )}
-        </Group>
-      </Card>
+      </CardSection>
+      <Group position="apart" mt="md" mb="xs">
+        <Flex direction={"column"}>
+          <Text weight={500}>
+            {song?.trackName?.split(" ").slice(0, 4).join(" ")}
+          </Text>
+          <Text size="sm">
+            {song?.artistName?.split(" ").slice(0, 2).join(" ")}
+          </Text>
+        </Flex>
+        {hoveredSong === song?.trackId && (
+          <Button variant="gradient" size="sm" onClick={handleSongClick}>
+            {song?.trackId === currentSong?.trackId && isPlaying ? (
+              <IconPlayerPauseFilled />
+            ) : (
+              <IconPlayerPlayFilled />
+            )}
+          </Button>
+        )}
+      </Group>
+    </Card>
   );
 };
 
