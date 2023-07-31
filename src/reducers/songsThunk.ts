@@ -11,7 +11,7 @@ export const fetchSongs = createAsyncThunk(
     const data = response.data.results?.map((song) => {
       return {
         ...song,
-        artworkUrl100: song?.artworkUrl100?.replace("100x100", "500x500"),
+        artworkUrl100: song?.artworkUrl100?.replace("100x100", "900x900"),
       };
     });
     return data;
